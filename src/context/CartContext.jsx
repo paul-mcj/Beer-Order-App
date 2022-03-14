@@ -3,14 +3,16 @@ import { createContext, useReducer } from "react";
 
 // Reducer Logic
 import cartReducer from "./CartReducer";
+import { getBeers } from "./CartActions";
 
 // Define Context
 const CartContext = createContext();
 
-// named export
+// named export for Provider component
 export const CartProvider = (props) => {
     // initial reducer context/state
     const init = {
+        beers: [],
         cartIsOpen: false,
     };
 
@@ -22,5 +24,5 @@ export const CartProvider = (props) => {
     );
 };
 
-// default export of context
+// default export of defined context
 export default CartContext;

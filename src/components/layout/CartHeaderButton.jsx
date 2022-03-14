@@ -14,7 +14,7 @@ const CartHeaderButton = () => {
                     <span className="badge badge-secondary indicator-item">8</span>
                 </div>
             </label>
-            <div tabIndex="0" className="mt-3 card dropdown-content bg-base-100 shadow">
+            <div tabIndex="0" className="mt-3 dropdown-content bg-base-100 shadow">
                 <Card>
                     <CartDropdown />
                 </Card>

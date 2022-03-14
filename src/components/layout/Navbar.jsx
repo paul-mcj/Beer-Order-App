@@ -1,11 +1,16 @@
 // Components
 import CartHeaderButton from "./CartHeaderButton";
 
+// React Router DOM
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
     return (
-        <nav className="navbar bg-base-100 mt-5 mb-40 shadow-xl rounded-box">
+        <nav className="navbar bg-base-100 mt-5 mb-40 shadow-xl rounded-box flex">
             <div className="flex-1">
-                <h1 className="text-xl font-bold">Beer Order App</h1>
+                <Link className="text-2xl" to="/">
+                    <button className="font-bold">Beer Order App</button>
+                </Link>
             </div>
             <div className="flex-none">
                 <CartHeaderButton />

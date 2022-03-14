@@ -3,7 +3,6 @@ import { createContext, useReducer } from "react";
 
 // Reducer Logic
 import cartReducer from "./CartReducer";
-import { getBeers } from "./CartActions";
 
 // Define Context
 const CartContext = createContext();

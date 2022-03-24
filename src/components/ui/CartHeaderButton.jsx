@@ -2,8 +2,8 @@
 import { AiOutlineShoppingCart as CartIcon } from "react-icons/ai";
 
 // Components
-import Card from "./Card";
-import CartDropdown from "./CartDropdown";
+import Card from "../layout/Card";
+import CartDropdown from "../layout/CartDropdown";
 
 const CartHeaderButton = () => {
     return (

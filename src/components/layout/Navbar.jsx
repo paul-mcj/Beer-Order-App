@@ -1,5 +1,5 @@
 // Components
-import CartHeaderButton from "./CartHeaderButton";
+import CartHeaderButton from "../ui/CartHeaderButton";
 
 // React Router DOM
 import { Link } from "react-router-dom";

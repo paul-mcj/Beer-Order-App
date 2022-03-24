@@ -2,7 +2,7 @@
 import { useContext, Fragment } from "react";
 
 // Context
-import CartContext from "../../context/CartContext";
+import CartContext from "../../context/cart/CartContext";
 
 // React Router Dom
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ const CartDropdown = () => {
     // const cartContext = useContext(CartContext);
 
     // dispatch action to reducer when the button click needs to be handled
-    // const handleClick = cartContext.dispatch({ type: "OPEN_CART" });
+    // const handleClick = cartContext.dispatch({ type: "NOT_LOADING" });
 
     return (
         <Fragment>

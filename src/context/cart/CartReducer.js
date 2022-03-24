@@ -1,9 +1,14 @@
 const cartReducer = (state, action) => {
     switch (action.type) {
-        case "OPEN_CART":
+        case "NOT_LOADING":
             return {
                 ...state,
-                cartIsOpen: true,
+                isLoading: false,
+            };
+        case "IS_LOADING":
+            return {
+                ...state,
+                isLoading: true,
             };
         case "GET_BEERS":
             return {

@@ -12,7 +12,7 @@ export const CartProvider = (props) => {
     // initial reducer context/state
     const init = {
         beers: [],
-        cartIsOpen: false,
+        isLoading: true,
     };
 
     // reducer for state mgmt

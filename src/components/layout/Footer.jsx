@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="justify-self-center self-end row-start-6">
+        <footer className="justify-self-center self-end">
             <div className="flex gap-3 justify-center mb-3">
                 <Link className="btn btn-ghost btn-primary text-lg" to="/">
                     <button>Home</button>

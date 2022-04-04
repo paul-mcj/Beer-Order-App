@@ -13,6 +13,10 @@ export const CartProvider = (props) => {
     const init = {
         beers: [],
         isLoading: true,
+        totalAmount: 0,
+        totalItems: 0,
+        oneMore: () => {},
+        oneLess: () => {},
     };
 
     // reducer for state mgmt

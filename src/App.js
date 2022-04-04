@@ -7,6 +7,7 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Error from "./pages/Error";
+import NotFound from "./pages/NotFound";
 
 // React Router DOM
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -31,6 +32,8 @@ const App = () => {
                                     <Route path="/cart" element={<Cart />} />
                                     <Route path="/about" element={<About />} />
                                     <Route path="/error" element={<Error />} />
+                                    {/* if pathname is to anything other than the pages specified above, go to: */}
+                                    <Route path="/*" element={<NotFound />} />
                                 </Routes>
                             </main>
                         </div>

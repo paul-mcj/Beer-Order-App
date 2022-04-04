@@ -1,8 +1,8 @@
 const Card = (props) => {
     return (
-        <div className="card card-bordered border-white">
+        <article className="card card-bordered border-white">
             <div className="card-body">{props.children}</div>
-        </div>
+        </article>
     );
 };
 

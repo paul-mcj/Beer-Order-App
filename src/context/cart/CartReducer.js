@@ -15,6 +15,8 @@ const cartReducer = (state, action) => {
                 ...state,
                 beers: action.payload,
             };
+        case "ADD_ONE_MORE":
+            return {};
         default:
             return state;
     }

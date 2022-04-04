@@ -5,7 +5,9 @@ import Card from "./Card";
 const Ontap = (props) => {
     const showCart =
         props.beers &&
-        props.beers.map((beer) => <BeerItem key={beer.id} id={beer.id} name={beer.name} />);
+        props.beers.map((beer) => (
+            <BeerItem key={beer.id} name={beer.name} amount={beer.abv.toFixed(2)} />
+        ));
 
     return (
         <div className="mt-10">

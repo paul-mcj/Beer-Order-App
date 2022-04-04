@@ -1,10 +1,13 @@
 // React & Hooks
 import React, { Fragment, useContext, useEffect } from "react";
 
+// React-router-dom
+import { Navigate } from "react-router-dom";
+
 // Components
 import Ontap from "../components/layout/Ontap";
 import WelcomeText from "../components/layout/WelcomeText";
-import Loading from "../components/utils/Loading";
+import Loading from "../components/assets/Loading";
 
 // Context
 import CartContext from "../context/cart/CartContext";
@@ -18,58 +21,67 @@ import { validateArr } from "../utils/functions";
 const BEERS_ARR = process.env.REACT_APP_BEERS_ARR_LENGTH;
 
 const Home = () => {
-    // import context
+    // import destruct. context
     const { beers, dispatch, isLoading } = useContext(CartContext);
-    const { error, updateErrState } = useContext(ErrorContext);
+    const { updateMsgState, error } = useContext(ErrorContext);
 
-    // declared local variable to hold data temporary before adding to context state
+    // declared local variable to hold data temporarily before adding to context state
     let beersArr = [];
 
+    // async function that grabs API data and updates context with values.
     const getApiData = async () => {
         // Do not run unless the context array is empty
         if (beers.length === 0) {
-            for (let i = 0; i < BEERS_ARR; i++) {
+            for (let i = 0; i < 8; i++) {
                 try {
                     let beer = await getBeers();
-                    // fixme: this performErrorFn should be from via error.context (which pushes to error page), not an anonymous fn
-                    // validateArr(beersArr, beer, updateErrState)
+                    // validate the local array -- if repeated values occur then update ErrorContext
                     validateArr(beersArr, beer, () => {
-                        window.location = "/error";
+                        updateMsgState(
+                            "Returned values from the server are causing errors. Please re-load the application"
+                        );
                     });
+                    // otherwise update local array and then update CartContext array
                     beersArr.push(beer);
-                    console.log(beersArr);
+                    // add array to cart
                     dispatch({ type: "GET_BEERS", payload: beersArr });
                 } catch (error) {
-                    //fixme: this should re-direct via the error.context. ??
-                    // window.location = "/error";
+                    updateMsgState(
+                        `There was an error connecting to the server. ${error}. Please re-load the application.`
+                    );
                 }
+                // Make sure context is updated
+                dispatch({ type: "NOT_LOADING" });
             }
-            // Make sure context is updated
-            dispatch({ type: "NOT_LOADING" });
         } else return;
     };
 
     // Fetch data upon component initialization and set loading context state when fetching is occurring. Only invoke if there is no data in the context array.
     useEffect(() => {
-        if (beers.length < BEERS_ARR) {
+        if (beers.length < 8) {
             getApiData();
             dispatch({ type: "IS_LOADING" });
         }
     }, []);
 
-    return (
-        // fixme: animation to bring all components into the page thorough quick counter-dissolve
-        <Fragment>
-            {isLoading ? (
-                <Loading />
-            ) : (
-                <Fragment>
-                    <WelcomeText />
-                    <Ontap beers={beers} />
-                </Fragment>
-            )}
-        </Fragment>
-    );
+    // check ErrorContext and redirect to Error page if an error occurs when fetching data
+    if (error) {
+        return <Navigate to="/error" />;
+    } else {
+        return (
+            // fixme: animation to bring all components into the page thorough quick counter-dissolve
+            <Fragment>
+                {isLoading ? (
+                    <Loading />
+                ) : (
+                    <Fragment>
+                        <WelcomeText />
+                        <Ontap beers={beers} />
+                    </Fragment>
+                )}
+            </Fragment>
+        );
+    }
 };
 
 export default Home;

@@ -8,7 +8,7 @@ import Card from "../../components/layout/Card";
 // context
 import CartContext from "../../context/cart/CartContext";
 
-const Receipt = ({ name, amount }) => {
+const Receipt = () => {
     const { beers } = useContext(CartContext);
     //  show cart items and amount. do a total like a receipt. have two buttons: one for order
     // and one to go back...

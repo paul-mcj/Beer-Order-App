@@ -1,5 +1,6 @@
 // React & Hooks
 import { createContext, useReducer } from "react";
+import PropTypes from "prop-types";
 
 // Reducer Logic
 import cartReducer from "./CartReducer";
@@ -8,7 +9,7 @@ import cartReducer from "./CartReducer";
 const CartContext = createContext();
 
 // named export for Provider component
-export const CartProvider = (props) => {
+export const CartProvider = ({ children }) => {
     // initial reducer context/state
     const init = {
         beers: [],
@@ -22,9 +23,12 @@ export const CartProvider = (props) => {
     // reducer for state mgmt
     const [state, dispatch] = useReducer(cartReducer, init);
 
-    return (
-        <CartContext.Provider value={{ ...state, dispatch }}>{props.children}</CartContext.Provider>
-    );
+    return <CartContext.Provider value={{ ...state, dispatch }}>{children}</CartContext.Provider>;
+};
+
+// assign proptypes
+CartProvider.propTypes = {
+    children: PropTypes.node.isRequired,
 };
 
 // default export of defined context

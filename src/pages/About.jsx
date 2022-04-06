@@ -17,6 +17,17 @@ const About = () => {
                     Cart component).
                 </p>
                 <p>
+                    It makes use of asynchronous JS functionality to get&nbsp;
+                    <a
+                        className="link link-accent"
+                        target="_blank"
+                        href="https://punkapi.com/documentation/v2"
+                    >
+                        API data
+                    </a>
+                    &nbsp;and make it look good.
+                </p>
+                <p>
                     For more on the specifics of this application, see the&nbsp;
                     <a
                         className="link link-accent"

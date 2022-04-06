@@ -38,7 +38,7 @@ const Home = () => {
                     // validate the local array -- if repeated values occur then update ErrorContext
                     validateArr(beersArr, beer, () => {
                         updateMsgState(
-                            "Returned values from the server are causing errors. Please re-load the application"
+                            `Returned ${error}} values from the server which is causing errors. Please re-load the application`
                         );
                     });
                     // otherwise update local array and then update CartContext array

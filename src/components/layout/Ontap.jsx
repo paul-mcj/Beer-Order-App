@@ -1,12 +1,15 @@
+// react & hooks
+import PropTypes from "prop-types";
+
 // Components
 import BeerItem from "./BeerItem";
 import Card from "./Card";
 
-const Ontap = (props) => {
+const Ontap = ({ beers }) => {
     const showCart =
-        props.beers &&
-        props.beers.map((beer) => (
-            <BeerItem key={beer.id} name={beer.name} amount={beer.abv.toFixed(2)} />
+        beers &&
+        beers.map((beer) => (
+            <BeerItem key={beer.id} name={beer.name} amount={Number(beer.abv.toFixed(2))} />
         ));
 
     return (
@@ -14,6 +17,10 @@ const Ontap = (props) => {
             <Card>{showCart}</Card>
         </div>
     );
+};
+
+Ontap.propTypes = {
+    beers: PropTypes.array.isRequired,
 };
 
 export default Ontap;

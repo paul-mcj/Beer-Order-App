@@ -1,11 +1,12 @@
 // React & Hooks
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
 // define context
 const ErrorContext = createContext();
 
 // named export for Provider component
-export const ErrorProvider = (props) => {
+export const ErrorProvider = ({ children }) => {
     // initial state
     const [error, setError] = useState(false);
     const [message, setMessage] = useState();
@@ -23,9 +24,14 @@ export const ErrorProvider = (props) => {
 
     return (
         <ErrorContext.Provider value={{ error, message, updateErrState, updateMsgState }}>
-            {props.children}
+            {children}
         </ErrorContext.Provider>
     );
+};
+
+// assign proptypes
+ErrorContext.PropTypes = {
+    children: PropTypes.node.isRequired,
 };
 
 // default export of defined context

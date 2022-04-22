@@ -14,10 +14,8 @@ export const CartProvider = ({ children }) => {
     const init = {
         beers: [],
         isLoading: true,
-        totalAmount: 0,
+        totalPrice: 0,
         totalItems: 0,
-        oneMore: () => {},
-        oneLess: () => {},
     };
 
     // reducer for state mgmt

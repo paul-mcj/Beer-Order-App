@@ -10,13 +10,35 @@ const cartReducer = (state, action) => {
                 ...state,
                 isLoading: true,
             };
-        case "GET_BEERS":
+        case "SET_BEERS":
             return {
                 ...state,
                 beers: action.payload,
             };
-        case "ADD_ONE_MORE":
-            return {};
+        case "UPDATE_BEER_ITEM_AMOUNT":
+            const { id, amount } = action.payload;
+            const beerItemIndex = state.beers.findIndex((beer) => beer.id === id);
+            const beerItem = state.beers[beerItemIndex];
+            let updatedBeerItem = {
+                ...beerItem,
+                amount,
+            };
+            let returnedArr = [...state.beers];
+            returnedArr[beerItemIndex] = updatedBeerItem;
+            return {
+                ...state,
+                beers: returnedArr,
+            };
+        case "UPDATE_TOTAL_ITEMS":
+            return {
+                ...state,
+                totalItems: action.payload,
+            };
+        case "UPDATE_TOTAL_PRICE":
+            return {
+                ...state,
+                totalPrice: action.payload,
+            };
         default:
             return state;
     }

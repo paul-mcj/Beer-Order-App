@@ -9,7 +9,13 @@ const Ontap = ({ beers }) => {
     const showCart =
         beers &&
         beers.map((beer) => (
-            <BeerItem key={beer.id} name={beer.name} amount={Number(beer.abv.toFixed(2))} />
+            <BeerItem
+                key={beer.id}
+                id={beer.id}
+                name={beer.name}
+                price={beer.price}
+                amount={beer.amount}
+            />
         ));
 
     return (

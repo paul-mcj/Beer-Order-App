@@ -1,5 +1,5 @@
 // React & Hooks
-import React, { Fragment, useContext, useEffect } from "react";
+import React, { Fragment, useCallback, useContext, useEffect } from "react";
 
 // React-router-dom
 import { Navigate } from "react-router-dom";
@@ -28,8 +28,8 @@ const Home = () => {
     // declared local variable to hold data temporarily before adding to context state
     let beersArr = [];
 
-    // async function that grabs API data and updates context with values.
-    const getApiData = async () => {
+    // async function that grabs API data and updates context with values. useCallback will optimize function to not be re-evaluated (and thus not make any more http requests) when component updates.
+    const getApiData = useCallback(async () => {
         // Do not run unless the context array is empty
         if (beers.length === 0) {
             for (let i = 0; i < 8; i++) {
@@ -38,23 +38,23 @@ const Home = () => {
                     // validate the local array -- if repeated values occur then update ErrorContext
                     validateArr(beersArr, beer, () => {
                         updateMsgState(
-                            `Returned ${error}} values from the server which is causing errors. Please re-load the application`
+                            `Returned ${error} values from the server causing errors. Please reload the application.`
                         );
                     });
                     // otherwise update local array and then update CartContext array
                     beersArr.push(beer);
                     // add array to cart
-                    dispatch({ type: "GET_BEERS", payload: beersArr });
+                    dispatch({ type: "SET_BEERS", payload: beersArr });
                 } catch (error) {
                     updateMsgState(
-                        `There was an error connecting to the server. ${error}. Please re-load the application.`
+                        `There was an error connecting to the server. ${error}. Please reload the application.`
                     );
                 }
-                // Make sure context is updated
+                // update loading context state regardless of error
                 dispatch({ type: "NOT_LOADING" });
             }
         } else return;
-    };
+    }, []);
 
     // Fetch data upon component initialization and set loading context state when fetching is occurring. Only invoke if there is no data in the context array.
     useEffect(() => {

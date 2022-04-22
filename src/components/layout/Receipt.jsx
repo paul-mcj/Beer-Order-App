@@ -1,12 +1,10 @@
 // react & hooks
-import { Fragment, useContext, useEffect } from "react";
-
-// react-router-dom
-import { Link } from "react-router-dom";
+import { Fragment, useContext, useState } from "react";
 
 // components
-import Button from "../ui/Button";
 import Card from "../../components/layout/Card";
+import Button from "../ui/Button";
+import SeeMoreIcon from "../assets/SeeMoreIcon";
 
 // context
 import CartContext from "../../context/cart/CartContext";
@@ -14,19 +12,23 @@ import CartContext from "../../context/cart/CartContext";
 const Receipt = () => {
     const taxRate = 0.13;
     const { beers, totalPrice } = useContext(CartContext);
+    const [displayTotals, setDisplayTotals] = useState(false);
 
-    // memoize?
-    const showItem = beers.map((beer) => {
+    const changeDisplayTotalsState = () => {
+        setDisplayTotals(() => !displayTotals);
+    };
+
+    const showItems = beers.map((beer) => {
         if (beer.amount > 0) {
             return (
                 <div
                     key={beer.id}
-                    className="grid grid-cols-4 justify-items-center gap-x-10 border-b border-dotted items-center"
+                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center"
                 >
                     <p className="text-center">{beer.amount}</p>
-                    <p className="text-center">{beer.name}</p>
-                    <p>${beer.price.toFixed(2)}</p>
-                    <p>${(beer.price * beer.amount).toFixed(2)}</p>
+                    <p className="text-center -mx-10">{beer.name}</p>
+                    <p>$ {beer.price.toFixed(2)}</p>
+                    <p>$ {(beer.price * beer.amount).toFixed(2)}</p>
                 </div>
             );
         } else {
@@ -34,62 +36,53 @@ const Receipt = () => {
         }
     });
 
-    // useEffect(() => {}, [beers]);
+    const colHeadings = (
+        <div className="grid grid-cols-4 justify-items-center mb-2">
+            <h1 className="text-lg text-bold">Qty</h1>
+            <h1 className="text-lg text-bold">Description</h1>
+            <h1 className="text-lg text-bold">Unit Price</h1>
+            <h1 className="text-lg text-bold">Total</h1>
+        </div>
+    );
 
-    // let showItem;
-    // beers
-    //     .filter((amount) => amount > 0)
-    //     .map((beer) => (
-    //         <Fragment key={beer.id}>
-    //             <p>{beer.name}</p>
-    //             <p>
-    //                 {beer.abv.toFixed(2)} x {beer.amount}
-    //             </p>
-    //             <p>$</p>
-    //         </Fragment>
-    //     ));
-
-    // useEffect(() => {
-    //     beers
-    //         .filter((amount) => amount > 0)
-    //         .map((beer) => (
-    //             <Fragment key={beer.id}>
-    //                 <p>{beer.name}</p>
-    //                 <p>
-    //                     {beer.abv.toFixed(2)} x {beer.amount}
-    //                 </p>
-    //                 <p>$</p>
-    //             </Fragment>
-    //         ));
-    // }, [beers]);
+    const finalAmounts = (
+        <Fragment>
+            <div className="grid mt-10 grid-cols-4">
+                <div className="grid-cols-3 col-start-3">
+                    <h1 className="text-right">Subtotal:</h1>
+                    <h1 className="text-right">Taxes:</h1>
+                    <h1 className="text-right text-lg font-bold mt-2">Total:</h1>
+                </div>
+                <div className="grid-cols-3 col-start-4 ml-10">
+                    <h1 className="text-left">$ {Math.abs(totalPrice).toFixed(2)}</h1>
+                    <h1 className="text-left">$ {Math.abs(totalPrice * taxRate).toFixed(2)}</h1>
+                    <h1 className="text-left mt-2 font-bold text-lg self-center">
+                        $ {Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}
+                    </h1>
+                </div>
+            </div>
+            {/* add  className="animate-pulse" if button hasn't been touched for 10 secs */}
+            <div className="text-center">
+                <Button>Place Order</Button>
+            </div>
+        </Fragment>
+    );
 
     return (
         <Fragment>
-            <div className="grid grid-cols-4 justify-items-center mb-5">
-                <h1 className="text-2xl text-bold">Qty</h1>
-                <h1 className="text-2xl text-bold">Description</h1>
-                <h1 className="text-2xl text-bold">Unit Price</h1>
-                <h1 className="text-2xl text-bold">Total</h1>
-            </div>
+            {colHeadings}
             <Card>
-                <Fragment>
-                    {showItem}
-                    <div className="grid justify-items-end">
-                        <h1>Subtotal: ${Math.abs(totalPrice).toFixed(2)}</h1>
-                        <h1>Taxes: ${Math.abs(totalPrice * taxRate).toFixed(2)}</h1>
-                        <h1>Total: ${Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}</h1>
+                {showItems}
+                {!displayTotals && (
+                    /* add  className="animate-pulse" if button hasn't been touched for 10 secs */
+                    <div className="mx-auto mt-10 animate-bounce">
+                        <Button handleClick={changeDisplayTotalsState}>
+                            <SeeMoreIcon />
+                        </Button>
                     </div>
-                </Fragment>
+                )}
+                {displayTotals && finalAmounts}
             </Card>
-            <div className="grid grid-rows-1 justify-items-center mt-5">
-                {/* <h1>Subtotal: ${Math.abs(totalPrice).toFixed(2)}</h1>
-                <h1>Taxes: ${Math.abs(totalPrice * taxRate).toFixed(2)}</h1>
-                <h1>Total: ${Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}</h1> */}
-                <Button>Place Order</Button>
-                <Link to="/">
-                    <Button>Go Home</Button>
-                </Link>
-            </div>
         </Fragment>
     );
 };

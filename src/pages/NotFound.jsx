@@ -1,19 +1,17 @@
-// react & hooks
-import { Fragment } from "react";
-
 // components
 import Button from "../components/ui/Button";
+import Header from "../components/layout/Header";
 
 // utils
 import { redirectToHomePg } from "../utils/functions";
 
 const NotFound = () => {
     return (
-        <Fragment>
-            <h1>Oops!</h1>
-            <p>Looks like the page you were looking for does not exist.</p>
+        <div className="flex flex-col items-center">
+            <Header>Oops!</Header>
+            <p className="mb-10">Looks like the page you were looking for does not exist.</p>
             <Button handleClick={redirectToHomePg}>Go Home</Button>
-        </Fragment>
+        </div>
     );
 };
 

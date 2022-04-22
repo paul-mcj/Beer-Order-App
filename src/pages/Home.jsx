@@ -7,7 +7,8 @@ import { Navigate } from "react-router-dom";
 // Components
 import Ontap from "../components/layout/Ontap";
 import WelcomeText from "../components/layout/WelcomeText";
-import Loading from "../components/assets/Loading";
+import LoadingIcon from "../components/assets/LoadingIcon";
+import Pagination from "../components/ui/Pagination";
 
 // Context
 import CartContext from "../context/cart/CartContext";
@@ -32,13 +33,13 @@ const Home = () => {
     const getApiData = useCallback(async () => {
         // Do not run unless the context array is empty
         if (beers.length === 0) {
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 4; i++) {
                 try {
                     let beer = await getBeers();
                     // validate the local array -- if repeated values occur then update ErrorContext
                     validateArr(beersArr, beer, () => {
                         updateMsgState(
-                            `Returned ${error} values from the server causing errors. Please reload the application.`
+                            `Returned ${error} values from external server causing errors. Please reload the application.`
                         );
                     });
                     // otherwise update local array and then update CartContext array
@@ -50,15 +51,15 @@ const Home = () => {
                         `There was an error connecting to the server. ${error}. Please reload the application.`
                     );
                 }
-                // update loading context state regardless of error
-                dispatch({ type: "NOT_LOADING" });
             }
+            // update loading context state once all values are gathered
+            dispatch({ type: "NOT_LOADING" });
         } else return;
     }, []);
 
     // Fetch data upon component initialization and set loading context state when fetching is occurring. Only invoke if there is no data in the context array.
     useEffect(() => {
-        if (beers.length < 8) {
+        if (beers.length < 4) {
             getApiData();
             dispatch({ type: "IS_LOADING" });
         }
@@ -70,13 +71,15 @@ const Home = () => {
     } else {
         return (
             // fixme: animation to bring all components into the page thorough quick counter-dissolve
+            // fixme: add pagination (ex: 3 pages of 5 beers each)??
             <Fragment>
                 {isLoading ? (
-                    <Loading />
+                    <LoadingIcon />
                 ) : (
                     <Fragment>
                         <WelcomeText />
                         <Ontap beers={beers} />
+                        <Pagination />
                     </Fragment>
                 )}
             </Fragment>

@@ -6,7 +6,7 @@ import BeerItem from "./BeerItem";
 import Card from "./Card";
 
 const Ontap = ({ beers }) => {
-    const showCart =
+    const showBeers =
         beers &&
         beers.map((beer) => (
             <BeerItem
@@ -20,7 +20,7 @@ const Ontap = ({ beers }) => {
 
     return (
         <div className="mt-10">
-            <Card>{showCart}</Card>
+            <Card>{showBeers}</Card>
         </div>
     );
 };

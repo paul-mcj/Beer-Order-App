@@ -8,20 +8,22 @@ import { useContext } from "react";
 
 // components
 import Button from "../components/ui/Button";
+import Header from "../components/layout/Header";
+import WarningIcon from "../components/assets/WarningIcon";
 
 // utils
 import { redirectToHomePg } from "../utils/functions";
-
-// react-icons
-import { TiWarningOutline as WarningIcon } from "react-icons/ti";
 
 const Error = () => {
     const { message } = useContext(ErrorContext);
 
     return (
         <div className="flex flex-col items-center gap-5">
-            <WarningIcon className="text-9xl" />
-            <p className="mb-10">{message}</p>
+            <Header>
+                <p className="-mb-10">Warning!</p>
+            </Header>
+            <WarningIcon />
+            <p className="mb-10 text-center">{message}</p>
             <Button handleClick={redirectToHomePg}>reload</Button>
         </div>
     );

@@ -1,13 +1,16 @@
-// Components
-import CartHeaderButton from "../ui/CartHeaderButton";
+// components
+import CartHeaderIcon from "../layout/CartHeaderIcon";
+import Button from "../ui/Button";
+import AboutIcon from "../assets/AboutIcon";
+import HomeIcon from "../assets/HomeIcon";
 
-// React Router DOM
+// react-router-dom
 import { Link } from "react-router-dom";
 
-//React & Hooks
+// react & hooks
 import { useContext } from "react";
 
-// Context
+// context
 import ErrorContext from "../../context/error/ErrorContext";
 
 const Navbar = () => {
@@ -27,8 +30,20 @@ const Navbar = () => {
 
     return (
         <nav className="navbar bg-base-100 mt-5 shadow-xl rounded-box flex ">
-            <div className="flex-1">{!error ? clickable : disabled}</div>
-            <div className="flex-none">{!error && <CartHeaderButton />}</div>
+            <div className="flex-1 px-10">{!error ? clickable : disabled}</div>
+            <div className="flex flex-end px-10">
+                <Link to="/">
+                    <Button className="btn-primary text-lg">
+                        <HomeIcon />
+                    </Button>
+                </Link>
+                <Link to="/about">
+                    <Button className="btn-primary text-lg">
+                        <AboutIcon />
+                    </Button>
+                </Link>
+                {!error && <CartHeaderIcon />}
+            </div>
         </nav>
     );
 };

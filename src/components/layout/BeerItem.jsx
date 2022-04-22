@@ -1,4 +1,4 @@
-// Components
+// components
 import Card from "./Card";
 import BeerItemAmount from "../ui/BeerItemAmount";
 
@@ -14,8 +14,7 @@ const BeerItem = ({ name, amount, id, price }) => {
             <ul className="grid grid-cols-2">
                 <li className="flex flex-col">
                     <p>{name}</p>
-                    <p>${price.toFixed(2)}</p>
-                    {/* <p>Amount: {currentItemAmount}</p> */}
+                    <p>$ {price.toFixed(2)}</p>
                 </li>
                 <li className="flex justify-between items-center justify-self-end">
                     <BeerItemAmount

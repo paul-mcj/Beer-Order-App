@@ -23,14 +23,14 @@ export const ErrorProvider = ({ children }) => {
     };
 
     return (
-        <ErrorContext.Provider value={{ error, message, updateErrState, updateMsgState }}>
+        <ErrorContext.Provider value={{ error, message, updateMsgState }}>
             {children}
         </ErrorContext.Provider>
     );
 };
 
 // assign proptypes
-ErrorContext.PropTypes = {
+ErrorContext.propTypes = {
     children: PropTypes.node.isRequired,
 };
 

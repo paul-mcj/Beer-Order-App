@@ -1,14 +1,14 @@
 // react
 import { Fragment } from "react";
 
-// react-router-dom
-import { Link } from "react-router-dom";
+// components
+import Header from "../components/layout/Header";
 
 const About = () => {
     return (
         <Fragment>
             <div className="flex flex-col text-center gap-y-5">
-                <header className="font-bold text-lg text-center mb-3">About This App</header>
+                <Header>About This App</Header>
                 <p>
                     This project utilizes React functional components and react router v6 to create
                     a SPA that allows users to simulate adding specific items to a cart with the

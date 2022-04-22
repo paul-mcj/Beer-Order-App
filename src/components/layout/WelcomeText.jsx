@@ -1,12 +1,14 @@
-import React, { Fragment } from "react";
+// react
+import { Fragment } from "react";
+
+// components
+import Header from "../layout/Header";
 
 const WelcomeText = () => {
     return (
         <Fragment>
-            <header className="font-bold text-lg text-center mb-3">
-                Order Your Beer Right Here
-            </header>
-            <p className="text-center">
+            <Header>Order Your Beer Right Here</Header>
+            <p className="text-center md:px-32">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum ipsum ipsam pariatur
                 voluptatem, totam obcaecati cumque assumenda adipisci explicabo impedit eveniet
                 inventore incidunt et culpa debitis.

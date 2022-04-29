@@ -13,15 +13,16 @@ import CartContext from "../../context/cart/CartContext";
 import NotificationContext from "../../context/notification/NotificationContext";
 
 const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) => {
+    // context
     const { dispatch, totalItems, totalPrice } = useContext(CartContext);
-    const { isNotification, updateState } = useContext(NotificationContext);
+    const { isNotification, updateNotificationState, closeNotification } =
+        useContext(NotificationContext);
 
     // beer item state is quickly updated to be one less
     const oneLess = () => {
-        // validation so that amount cannot be less than zero
+        // validation so that amount cannot be less than zero (else call notification)
         if (currentItemAmount - 1 < 0) {
-            console.log("show modal");
-            updateState(() => !isNotification);
+            updateNotificationState(() => !isNotification);
         } else {
             setCurrentItemAmount((prevAmount) => prevAmount - 1);
             dispatch({
@@ -44,16 +45,12 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
         dispatch({ type: "UPDATE_TOTAL_PRICE", payload: totalPrice + price });
     };
 
-    const handleClick = () => {
-        updateState(() => !isNotification);
-    };
-
     if (isNotification) {
         return (
             <Notification
                 title="Notice"
                 message="Amount cannot be less than 0"
-                handleClick={handleClick}
+                handleClick={closeNotification}
             />
         );
     } else {
@@ -62,7 +59,7 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
                 <Button handleClick={oneLess}>
                     <LessIcon />
                 </Button>
-                {currentItemAmount}
+                <span className="mx-3">{currentItemAmount}</span>
                 <Button handleClick={oneMore}>
                     <MoreIcon />
                 </Button>

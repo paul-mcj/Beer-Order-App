@@ -1,5 +1,5 @@
 // React & Hooks
-import React, { Fragment, useCallback, useContext, useEffect } from "react";
+import React, { Fragment, useCallback, useContext, useEffect, useState } from "react";
 
 // React-router-dom
 import { Navigate } from "react-router-dom";
@@ -22,7 +22,10 @@ import { validateArr } from "../utils/functions";
 const BEERS_ARR = process.env.REACT_APP_BEERS_ARR_LENGTH;
 
 const Home = () => {
-    // import destruct. context
+    // local state (passed as props)
+    const [pageNum, setPageNum] = useState(1);
+
+    // context
     const { beers, dispatch, isLoading } = useContext(CartContext);
     const { updateMsgState, error } = useContext(ErrorContext);
 
@@ -33,7 +36,7 @@ const Home = () => {
     const getApiData = useCallback(async () => {
         // Do not run unless the context array is empty
         if (beers.length === 0) {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 15; i++) {
                 try {
                     let beer = await getBeers();
                     // validate the local array -- if repeated values occur then update ErrorContext
@@ -54,16 +57,22 @@ const Home = () => {
             }
             // update loading context state once all values are gathered
             dispatch({ type: "NOT_LOADING" });
+            console.log(beersArr);
         } else return;
     }, []);
 
     // Fetch data upon component initialization and set loading context state when fetching is occurring. Only invoke if there is no data in the context array.
     useEffect(() => {
-        if (beers.length < 4) {
+        if (beers.length < 15) {
             getApiData();
             dispatch({ type: "IS_LOADING" });
         }
     }, []);
+
+    const setCurrentPage = (num) => {
+        setPageNum(() => num);
+        console.log(pageNum);
+    };
 
     // check ErrorContext and redirect to Error page if an error occurs when fetching data
     if (error) {
@@ -78,8 +87,8 @@ const Home = () => {
                 ) : (
                     <Fragment>
                         <WelcomeText />
-                        <Ontap beers={beers} />
-                        <Pagination />
+                        <Ontap beers={beers} pageNum={pageNum} />
+                        <Pagination pageNum={pageNum} setCurrentPage={setCurrentPage} />
                     </Fragment>
                 )}
             </Fragment>

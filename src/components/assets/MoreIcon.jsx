@@ -1,11 +1,14 @@
 // react-icons
 import { GoPlus as More } from "react-icons/go";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const MoreIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <More className="text-sm" />
-        </div>
+        </IconWrapper>
     );
 };
 

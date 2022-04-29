@@ -1,11 +1,14 @@
 // react-icons
 import { GoDash as Less } from "react-icons/go";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const LessIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <Less className="text-sm" />
-        </div>
+        </IconWrapper>
     );
 };
 

@@ -11,15 +11,21 @@ export const NotificationProvider = ({ children }) => {
     const [isNotification, setIsNotification] = useState(false);
 
     // function to change context state
-    const updateState = () => {
+    const updateNotificationState = () => {
         setIsNotification(() => !isNotification);
+    };
+
+    // closes notification panel
+    const closeNotification = () => {
+        updateNotificationState(() => !isNotification);
     };
 
     return (
         <NotificationContext.Provider
             value={{
                 isNotification,
-                updateState,
+                updateNotificationState,
+                closeNotification,
             }}
         >
             {children}

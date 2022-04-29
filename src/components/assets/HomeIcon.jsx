@@ -1,11 +1,14 @@
 // react-icons
 import { AiFillHome as Home } from "react-icons/ai";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const HomeIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <Home className="text-2xl" />
-        </div>
+        </IconWrapper>
     );
 };
 

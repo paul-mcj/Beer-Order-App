@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Button = ({ children, handleClick }) => {
     return (
         <button
-            className="btn btn-ghost mx-2 hover:bg-secondary-focus hover:text-black"
+            className="btn btn-ghost mx-2 hover:bg-secondary-focus hover:text-neutral"
             onClick={handleClick}
         >
             {children}

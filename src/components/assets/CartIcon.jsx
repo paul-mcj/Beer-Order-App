@@ -1,11 +1,14 @@
 // react-icons
 import { AiOutlineShoppingCart as Cart } from "react-icons/ai";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const CartIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <Cart className="text-2xl" />
-        </div>
+        </IconWrapper>
     );
 };
 

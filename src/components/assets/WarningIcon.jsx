@@ -1,11 +1,14 @@
 // react-icons
 import { TiWarningOutline as Warning } from "react-icons/ti";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const WarningIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <Warning className="text-9xl" />
-        </div>
+        </IconWrapper>
     );
 };
 

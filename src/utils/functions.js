@@ -9,5 +9,10 @@ export const validateArr = (beerArr, newBeer, performError) => {
     });
 };
 
+// Find location of a beer object in an array given an id
+export const findBeerIndex = (beerArr, beerObj) => {
+    return beerArr.findIndex((beer) => beer.id === beerObj);
+};
+
 // Redirect to error page
 export const redirectToHomePg = () => (window.location = "/");

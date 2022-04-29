@@ -1,11 +1,14 @@
 // react-icons
 import { BsInfoLg as Info } from "react-icons/bs";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const AboutIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <Info className="text-2xl" />
-        </div>
+        </IconWrapper>
     );
 };
 

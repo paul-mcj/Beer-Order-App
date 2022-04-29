@@ -1,32 +1,61 @@
 // components
 import Card from "./Card";
 import BeerItemAmount from "../ui/BeerItemAmount";
+import ExternalIcon from "../assets/ExternalIcon";
+import Notification from "./Notification";
 
 // react & hooks
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
-const BeerItem = ({ name, amount, id, price }) => {
+// context
+import NotificationContext from "../../context/notification/NotificationContext";
+import CartContext from "../../context/cart/CartContext";
+
+const BeerItem = ({ name, amount, id, price, est, description, food }) => {
+    // local state
     const [currentItemAmount, setCurrentItemAmount] = useState(amount);
 
-    return (
-        <Card>
-            <ul className="grid grid-cols-2">
-                <li className="flex flex-col">
-                    <p>{name}</p>
-                    <p>$ {price.toFixed(2)}</p>
-                </li>
-                <li className="flex justify-between items-center justify-self-end">
-                    <BeerItemAmount
-                        currentItemAmount={currentItemAmount}
-                        setCurrentItemAmount={setCurrentItemAmount}
-                        id={id}
-                        price={price}
-                    />
-                </li>
-            </ul>
-        </Card>
-    );
+    // context
+    const { isNotification, updateNotificationState, closeNotification } =
+        useContext(NotificationContext);
+    const { beers, dispatch, totalItems, totalPrice } = useContext(CartContext);
+
+    const openNotif = (e) => {
+        updateNotificationState(() => !isNotification);
+        // console.log(e.target);
+    };
+
+    if (isNotification) {
+        return (
+            <Notification
+                title={name}
+                message={`Est. ${est}`}
+                description={description}
+                food={food}
+                handleClick={closeNotification}
+            />
+        );
+    } else
+        return (
+            <Card>
+                <ul className="grid grid-cols-2">
+                    <li className="flex flex-col">
+                        <p>{name}</p>
+                        <p>$ {price.toFixed(2)}</p>
+                        <ExternalIcon handleClick={openNotif} />
+                    </li>
+                    <li className="flex justify-between items-center justify-self-end">
+                        <BeerItemAmount
+                            currentItemAmount={currentItemAmount}
+                            setCurrentItemAmount={setCurrentItemAmount}
+                            id={id}
+                            price={price}
+                        />
+                    </li>
+                </ul>
+            </Card>
+        );
 };
 
 BeerItem.propTypes = {
@@ -34,6 +63,9 @@ BeerItem.propTypes = {
     amount: PropTypes.number,
     id: PropTypes.number,
     price: PropTypes.number,
+    est: PropTypes.string,
+    description: PropTypes.string,
+    food: PropTypes.array,
 };
 
 export default BeerItem;

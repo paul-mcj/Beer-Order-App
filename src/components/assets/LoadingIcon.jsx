@@ -1,11 +1,14 @@
 // react-icons
 import { ImSpinner9 as Loading } from "react-icons/im";
 
+// components
+import IconWrapper from "../layout/IconWrapper";
+
 const LoadingIcon = () => {
     return (
-        <div className="flex flex-col items-center gap-5">
+        <IconWrapper>
             <Loading className="animate-spin text-5xl" />
-        </div>
+        </IconWrapper>
     );
 };
 

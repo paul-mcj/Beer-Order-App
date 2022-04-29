@@ -4,20 +4,49 @@ import { Fragment, useContext, useState } from "react";
 // components
 import Card from "../../components/layout/Card";
 import Button from "../ui/Button";
-import SeeMoreIcon from "../assets/SeeMoreIcon";
+import SeeMoreButton from "../ui/SeeMoreButton";
+import PlaceOrderButton from "../ui/PlaceOrderButton";
+import Notification from "./Notification";
+import LoadingIcon from "../assets/LoadingIcon";
 
 // context
 import CartContext from "../../context/cart/CartContext";
+import NotificationContext from "../../context/notification/NotificationContext";
+
+// utils
+import { redirectToHomePg } from "../../utils/functions";
 
 const Receipt = () => {
+    // local vars
     const taxRate = 0.13;
-    const { beers, totalPrice } = useContext(CartContext);
-    const [displayTotals, setDisplayTotals] = useState(false);
 
+    // local state
+    const [displayTotals, setDisplayTotals] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [orderHasBeenPlaced, setOrderHasBeenPlaced] = useState(false);
+
+    // context
+    const { beers, totalPrice } = useContext(CartContext);
+    const { isNotification, updateNotificationState, closeNotification } =
+        useContext(NotificationContext);
+
+    // reveal total price amounts
     const changeDisplayTotalsState = () => {
         setDisplayTotals(() => !displayTotals);
     };
 
+    // defines what will occur when an order is placed
+    const placeOrder = () => {
+        setIsLoading(() => true);
+        setOrderHasBeenPlaced(() => true);
+        // wait 3 secs before updating state so LoadingIcon can be seen
+        setTimeout(() => {
+            updateNotificationState(() => !isNotification);
+            setIsLoading(() => false);
+        }, 3000);
+    };
+
+    // only show beer items that have been selected from the home screen
     const showItems = beers.map((beer) => {
         if (beer.amount > 0) {
             return (
@@ -61,30 +90,40 @@ const Receipt = () => {
                     </h1>
                 </div>
             </div>
-            {/* add  className="animate-pulse" if button hasn't been touched for 10 secs */}
             <div className="text-center">
-                <Button>Place Order</Button>
+                {!orderHasBeenPlaced && !isLoading && <PlaceOrderButton handleClick={placeOrder} />}
+                {orderHasBeenPlaced && isLoading && (
+                    <div className="p-5">
+                        <LoadingIcon />
+                    </div>
+                )}
+                {orderHasBeenPlaced && !isLoading && (
+                    <Button handleClick={redirectToHomePg}>reload</Button>
+                )}
             </div>
         </Fragment>
     );
 
-    return (
-        <Fragment>
-            {colHeadings}
-            <Card>
-                {showItems}
-                {!displayTotals && (
-                    /* add  className="animate-pulse" if button hasn't been touched for 10 secs */
-                    <div className="mx-auto mt-10 animate-bounce">
-                        <Button handleClick={changeDisplayTotalsState}>
-                            <SeeMoreIcon />
-                        </Button>
-                    </div>
-                )}
-                {displayTotals && finalAmounts}
-            </Card>
-        </Fragment>
-    );
+    if (isNotification) {
+        return (
+            <Notification
+                title="Thank-you!"
+                message="Your order has been successfully placed"
+                handleClick={closeNotification}
+            />
+        );
+    } else {
+        return (
+            <Fragment>
+                {colHeadings}
+                <Card>
+                    {showItems}
+                    {!displayTotals && <SeeMoreButton handleClick={changeDisplayTotalsState} />}
+                    {displayTotals && finalAmounts}
+                </Card>
+            </Fragment>
+        );
+    }
 };
 
 export default Receipt;

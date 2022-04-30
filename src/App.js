@@ -23,7 +23,7 @@ const App = () => {
             <ErrorProvider>
                 <NotificationProvider>
                     <BrowserRouter>
-                        <div className="grid h-screen grid-rows-auto">
+                        <div className="grid h-screen grid-rows-auto overflow-scroll">
                             <div className="px-20 row-start-1 row-span-1">
                                 <Navbar />
                             </div>

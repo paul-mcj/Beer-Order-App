@@ -1,12 +1,10 @@
-// react
-import { Fragment } from "react";
-
 // components
 import Header from "../components/layout/Header";
+import PageWrapper from "../components/layout/PageWrapper";
 
 const About = () => {
     return (
-        <Fragment>
+        <PageWrapper>
             <div className="flex flex-col text-center gap-y-5">
                 <Header>About This App</Header>
                 <p>
@@ -39,7 +37,7 @@ const About = () => {
                     .
                 </p>
             </div>
-        </Fragment>
+        </PageWrapper>
     );
 };
 

@@ -11,7 +11,7 @@ const ExternalIcon = ({ handleClick }) => {
     return (
         <IconWrapper>
             <button onClick={handleClick}>
-                <MoreInfo className="text-primary-content hover:text-accent" />
+                <MoreInfo className="hover:text-accent" />
             </button>
         </IconWrapper>
     );

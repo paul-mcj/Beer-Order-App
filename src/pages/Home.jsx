@@ -9,6 +9,7 @@ import Ontap from "../components/layout/Ontap";
 import WelcomeText from "../components/layout/WelcomeText";
 import LoadingIcon from "../components/assets/LoadingIcon";
 import Pagination from "../components/ui/Pagination";
+import PageWrapper from "../components/layout/PageWrapper";
 
 // Context
 import CartContext from "../context/cart/CartContext";
@@ -36,7 +37,7 @@ const Home = () => {
     const getApiData = useCallback(async () => {
         // Do not run unless the context array is empty
         if (beers.length === 0) {
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 12; i++) {
                 try {
                     let beer = await getBeers();
                     // validate the local array -- if repeated values occur then update ErrorContext
@@ -61,9 +62,9 @@ const Home = () => {
         } else return;
     }, []);
 
-    // Fetch data upon component initialization and set loading context state when fetching is occurring. Only invoke if there is no data in the context array.
+    // Fetch data upon component initialization, set loading context state when fetching is occurring, and set to the first page. Only invoke if there is no data in the context array.
     useEffect(() => {
-        if (beers.length < 15) {
+        if (beers.length < 12) {
             getApiData();
             dispatch({ type: "IS_LOADING" });
         }
@@ -71,7 +72,6 @@ const Home = () => {
 
     const setCurrentPage = (num) => {
         setPageNum(() => num);
-        console.log(pageNum);
     };
 
     // check ErrorContext and redirect to Error page if an error occurs when fetching data
@@ -80,8 +80,7 @@ const Home = () => {
     } else {
         return (
             // fixme: animation to bring all components into the page thorough quick counter-dissolve
-            // fixme: add pagination (ex: 3 pages of 5 beers each)??
-            <Fragment>
+            <PageWrapper>
                 {isLoading ? (
                     <LoadingIcon />
                 ) : (
@@ -91,7 +90,7 @@ const Home = () => {
                         <Pagination pageNum={pageNum} setCurrentPage={setCurrentPage} />
                     </Fragment>
                 )}
-            </Fragment>
+            </PageWrapper>
         );
     }
 };

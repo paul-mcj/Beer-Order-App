@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const WarningIcon = () => {
     return (
         <IconWrapper>
-            <Warning className="text-9xl" />
+            <Warning className="text-warning animate-warning text-6xl" />
         </IconWrapper>
     );
 };

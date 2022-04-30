@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 // Components
 import BeerItem from "./BeerItem";
-import Card from "./Card";
+// import div from "./div";
 
 const Ontap = ({ beers, pageNum }) => {
     const showBeers = beers.map((beer) => (
@@ -20,9 +20,9 @@ const Ontap = ({ beers, pageNum }) => {
 
     return (
         <div className="mt-10">
-            {pageNum === 1 && <Card>{showBeers.slice(0, 5)}</Card>}
-            {pageNum === 2 && <Card>{showBeers.slice(5, 10)}</Card>}
-            {pageNum === 3 && <Card>{showBeers.slice(10, 15)}</Card>}
+            {pageNum === 1 && <div className="flex flex-col gap-3">{showBeers.slice(0, 4)}</div>}
+            {pageNum === 2 && <div>{showBeers.slice(4, 8)}</div>}
+            {pageNum === 3 && <div>{showBeers.slice(8, 12)}</div>}
         </div>
     );
 };

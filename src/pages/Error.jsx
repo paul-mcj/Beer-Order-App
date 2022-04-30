@@ -10,6 +10,7 @@ import { useContext } from "react";
 import Button from "../components/ui/Button";
 import Header from "../components/layout/Header";
 import WarningIcon from "../components/assets/WarningIcon";
+import PageWrapper from "../components/layout/PageWrapper";
 
 // utils
 import { redirectToHomePg } from "../utils/functions";
@@ -18,14 +19,16 @@ const Error = () => {
     const { message } = useContext(ErrorContext);
 
     return (
-        <div className="flex flex-col items-center gap-5">
-            <Header>
-                <p className="-mb-10">Warning!</p>
-            </Header>
-            <WarningIcon />
-            <p className="mb-10 text-center">{message}</p>
-            <Button handleClick={redirectToHomePg}>reload</Button>
-        </div>
+        <PageWrapper>
+            <div className="flex flex-col items-center gap-5">
+                <Header>
+                    <p className="-mb-10">Warning!</p>
+                </Header>
+                <WarningIcon />
+                <p className="mb-10 text-center">{message}</p>
+                <Button handleClick={redirectToHomePg}>reload</Button>
+            </div>
+        </PageWrapper>
     );
 };
 

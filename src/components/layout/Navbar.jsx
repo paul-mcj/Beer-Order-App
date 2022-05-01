@@ -1,8 +1,8 @@
 // components
 import CartHeaderIcon from "../layout/CartHeaderIcon";
-import Button from "../ui/Button";
 import AboutIcon from "../assets/AboutIcon";
 import HomeIcon from "../assets/HomeIcon";
+import Button from "../ui/Button";
 
 // react-router-dom
 import { Link } from "react-router-dom";
@@ -17,16 +17,16 @@ const Navbar = () => {
     const { error } = useContext(ErrorContext);
 
     return (
-        <nav className="navbar bg-base-100 mt-5 shadow-xl rounded-box flex px-10">
-            <div className="flex-1 text-2xl font-bold">Beer Order App</div>
-            <div className="flex flex-end justify-between">
+        <nav className="navbar bg-base-300 mt-5 rounded flex px-10">
+            <div className="flex-1 text-3xl font-bold">Beer Order App</div>
+            <div className="flex flex-end justify-between gap-5">
                 <Link to="/">
-                    <Button className="btn-primary text-lg">
+                    <Button>
                         <HomeIcon />
                     </Button>
                 </Link>
                 <Link to="/about">
-                    <Button className="btn-primary text-lg">
+                    <Button>
                         <AboutIcon />
                     </Button>
                 </Link>

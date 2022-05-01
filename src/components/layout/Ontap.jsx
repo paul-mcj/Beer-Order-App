@@ -1,9 +1,10 @@
 // react & hooks
 import PropTypes from "prop-types";
+import { Fragment } from "react";
 
 // Components
 import BeerItem from "./BeerItem";
-// import div from "./div";
+import GroupBeerItems from "./GroupBeerItems";
 
 const Ontap = ({ beers, pageNum }) => {
     const showBeers = beers.map((beer) => (
@@ -16,21 +17,18 @@ const Ontap = ({ beers, pageNum }) => {
         />
     ));
 
-    // setSegmentedBeersArr((prev) => [...prev, showBeers[i]]);
-
     return (
-        <div className="mt-10">
-            {pageNum === 1 && <div className="flex flex-col gap-3">{showBeers.slice(0, 4)}</div>}
-            {pageNum === 2 && <div>{showBeers.slice(4, 8)}</div>}
-            {pageNum === 3 && <div>{showBeers.slice(8, 12)}</div>}
-        </div>
+        <Fragment>
+            {pageNum === 1 && <GroupBeerItems>{showBeers.slice(0, 4)}</GroupBeerItems>}
+            {pageNum === 2 && <GroupBeerItems>{showBeers.slice(4, 8)}</GroupBeerItems>}
+            {pageNum === 3 && <GroupBeerItems>{showBeers.slice(8, 12)}</GroupBeerItems>}
+        </Fragment>
     );
 };
 
 Ontap.propTypes = {
-    // beers: PropTypes.array.isRequired,
-    // fixme: is required
-    // paginationBeers: PropTypes.number,
+    beers: PropTypes.array.isRequired,
+    pageNum: PropTypes.number,
 };
 
 export default Ontap;

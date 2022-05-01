@@ -5,17 +5,17 @@ import PageWrapper from "../components/layout/PageWrapper";
 const About = () => {
     return (
         <PageWrapper>
-            <div className="flex flex-col text-center gap-y-5">
-                <Header>About This App</Header>
-                <p>
+            <Header>About This App</Header>
+            <div className="flex flex-col text-center gap-y-10 px-12">
+                <p className="leading-8">
                     This project utilizes React functional components and react router v6 to create
                     a SPA that allows users to simulate adding specific items to a cart with the
                     ability to quickly and dynamically change items in the cart, as well as navigate
                     to different pages of the application (such as the Home and About pages and the
                     Cart component).
                 </p>
-                <p>
-                    It makes use of asynchronous JS functionality to get&nbsp;
+                <p className="leading-8">
+                    It makes use of asynchronous JS to gather&nbsp;
                     <a
                         className="link link-accent"
                         target="_blank"
@@ -23,9 +23,14 @@ const About = () => {
                     >
                         API data
                     </a>
-                    &nbsp;and make it look good.
+                    &nbsp;and transforms the result into realistic, usable information for the
+                    application. UI is styled with{" "}
+                    <a className="link link-accent" target="_blank" href="https://tailwindcss.com/">
+                        Tailwind CSS
+                    </a>
+                    &nbsp; and sprinkles use of custom animations for an enjoyable UX.
                 </p>
-                <p>
+                <p className="leading-8">
                     For more on the specifics of this application, see the&nbsp;
                     <a
                         className="link link-accent"
@@ -35,6 +40,17 @@ const About = () => {
                         documentation
                     </a>
                     .
+                </p>
+                <p className="leading-8">
+                    For more on my other projects, see my&nbsp;
+                    <a
+                        className="link link-accent"
+                        target="_blank"
+                        href="https://github.com/paul-mcj/"
+                    >
+                        Github
+                    </a>{" "}
+                    profile.
                 </p>
             </div>
         </PageWrapper>

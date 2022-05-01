@@ -52,7 +52,7 @@ const Receipt = () => {
             return (
                 <div
                     key={beer.id}
-                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center"
+                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2"
                 >
                     <p className="text-center">{beer.amount}</p>
                     <p className="text-center -mx-10">{beer.name}</p>
@@ -76,16 +76,16 @@ const Receipt = () => {
 
     const finalAmounts = (
         <Fragment>
-            <div className="grid mt-10 grid-cols-4">
+            <div className="grid mt-6 grid-cols-4">
                 <div className="grid-cols-3 col-start-3">
                     <h1 className="text-right">Subtotal:</h1>
                     <h1 className="text-right">Taxes:</h1>
-                    <h1 className="text-right text-lg font-bold mt-2">Total:</h1>
+                    <h1 className="text-right text-lg font-bold">Total:</h1>
                 </div>
                 <div className="grid-cols-3 col-start-4 ml-10">
                     <h1 className="text-left">$ {Math.abs(totalPrice).toFixed(2)}</h1>
                     <h1 className="text-left">$ {Math.abs(totalPrice * taxRate).toFixed(2)}</h1>
-                    <h1 className="text-left mt-2 font-bold text-lg self-center">
+                    <h1 className="text-left font-bold text-lg self-center">
                         $ {Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}
                     </h1>
                 </div>

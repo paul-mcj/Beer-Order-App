@@ -22,7 +22,7 @@ const SeeMoreButton = ({ handleClick }) => {
     return (
         <div className="mx-auto mt-10">
             {shouldAnimate ? (
-                <div className="animate-bounce">
+                <div className="animate-bounceDown">
                     <Button handleClick={handleClick}>
                         <DropdownIcon />
                     </Button>

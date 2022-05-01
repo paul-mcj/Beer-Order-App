@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const CartIcon = () => {
     return (
         <IconWrapper>
-            <Cart className="text-2xl" />
+            <Cart className="text-2xl hover:text-secondary" />
         </IconWrapper>
     );
 };

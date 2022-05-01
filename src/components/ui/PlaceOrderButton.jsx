@@ -21,11 +21,19 @@ const PlaceOrderButton = ({ handleClick }) => {
     return (
         <div className="mx-auto mt-10">
             {shouldAnimate ? (
-                <div className="animate-pulseDeep">
-                    <Button handleClick={handleClick}>Place order</Button>
-                </div>
+                <button
+                    onClick={handleClick}
+                    className="animate-pulseDeep btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content"
+                >
+                    place order
+                </button>
             ) : (
-                <Button handleClick={handleClick}>Place order</Button>
+                <button
+                    onClick={handleClick}
+                    className="btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content"
+                >
+                    place order
+                </button>
             )}
         </div>
     );

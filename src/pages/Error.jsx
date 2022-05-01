@@ -22,7 +22,7 @@ const Error = () => {
         <PageWrapper>
             <div className="flex flex-col items-center gap-5">
                 <Header>
-                    <p className="-mb-10">Warning!</p>
+                    <p>Warning!</p>
                 </Header>
                 <WarningIcon />
                 <p className="mb-10 text-center">{message}</p>

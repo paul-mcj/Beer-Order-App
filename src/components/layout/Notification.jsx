@@ -7,32 +7,29 @@ import ReactDOM from "react-dom";
 
 // components
 import Header from "./Header";
-import Card from "./Card";
 
 const Backdrop = () => {
-    return <div className="bg-black opacity-25 fixed top-0 left-0 w-full h-screen z-10" />;
+    return <div className="bg-base-content opacity-20 fixed top-0 left-0 w-full h-screen z-10" />;
 };
 
 const Overlay = ({ title, message, handleClick, description, food }) => {
     return (
         <div className="grid justify-items-center">
-            <div className="z-10 bg-secondary fixed top-20">
-                <Card>
+            <div className="z-10 bg-neutral fixed top-20">
+                <section className="flex flex-col m-10 items-center">
                     <Header>
-                        <p className="text-accent-content">{title}</p>
+                        <p className="text-secondary-content">{title}</p>
                     </Header>
-                    <p className="text-accent-content mb-5">{message}</p>
+                    <p className="text-secondary-content mb-5">{message}</p>
                     {description && <p>{description}</p>}
-                    {food && <ul>food goes here</ul>}
-                    <div className="mx-auto">
-                        <button
-                            className="btn btn-secondary text-accent-content hover:text-black"
-                            onClick={handleClick}
-                        >
-                            continue
-                        </button>
-                    </div>
-                </Card>
+                    {food && <ul>food array goes here</ul>}
+                    <button
+                        className="btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content"
+                        onClick={handleClick}
+                    >
+                        continue
+                    </button>
+                </section>
             </div>
         </div>
     );

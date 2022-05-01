@@ -2,7 +2,11 @@
 import PropTypes from "prop-types";
 
 const Header = ({ children }) => {
-    return <header className="font-bold text-xl text-center mb-3">{children}</header>;
+    return (
+        <header className="font-bold text-2xl text-center text-secondary-focus mb-10">
+            {children}
+        </header>
+    );
 };
 
 Header.propTypes = {

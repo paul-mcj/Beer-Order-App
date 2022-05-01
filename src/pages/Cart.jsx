@@ -1,7 +1,6 @@
 // components
 import Receipt from "../components/layout/Receipt";
 import Header from "../components/layout/Header";
-import Button from "../components/ui/Button";
 import PageWrapper from "../components/layout/PageWrapper";
 
 // react-router-dom
@@ -20,9 +19,11 @@ const Cart = () => {
         return (
             <PageWrapper>
                 <Header>Looks like your cart is empty!</Header>
-                <div className="grid grid-rows-1 justify-items-center mt-5">
+                <div className="grid grid-rows-1 justify-items-center">
                     <Link to="/">
-                        <Button>Go Home</Button>
+                        <button className="btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content">
+                            go home
+                        </button>
                     </Link>
                 </div>
             </PageWrapper>
@@ -32,9 +33,7 @@ const Cart = () => {
     return (
         <div className="mt-10">
             <PageWrapper>
-                <Header>
-                    <div className="mb-10 text-2xl">Your Cart</div>
-                </Header>
+                <Header>Your Cart</Header>
                 <Receipt />
             </PageWrapper>
         </div>

@@ -10,7 +10,7 @@ const Footer = () => {
     if (!error) {
         return (
             <footer className="justify-self-center">
-                <p className="my-5 text-sm text-primary-content">
+                <p className="my-5 text-sm text-base-content">
                     Copyright &copy;2022 Paul McJannet | All Rights Reserved
                 </p>
             </footer>

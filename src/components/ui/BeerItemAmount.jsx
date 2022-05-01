@@ -59,7 +59,7 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
                 <Button handleClick={oneLess}>
                     <LessIcon />
                 </Button>
-                <span className="mx-3">{currentItemAmount}</span>
+                <span className="mx-5">{currentItemAmount}</span>
                 <Button handleClick={oneMore}>
                     <MoreIcon />
                 </Button>

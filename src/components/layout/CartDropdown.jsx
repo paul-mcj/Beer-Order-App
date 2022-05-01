@@ -12,12 +12,14 @@ const CartDropdown = () => {
 
     return (
         <Fragment>
-            <span className="text-info">
+            <span className="text-primary">
                 <p className="text-center">Total:</p>
-                <p className="text-center">$ {totalPrice.toFixed(2)}</p>
+                <p className="text-center">$ {Math.abs(totalPrice).toFixed(2)}</p>
             </span>
             <Link to="/cart">
-                <button className="btn btn-secondary">View Cart</button>
+                <button className="btn border-none btn-secondary hover:bg-secondary-focus hover:text-base-300">
+                    View Cart
+                </button>
             </Link>
         </Fragment>
     );

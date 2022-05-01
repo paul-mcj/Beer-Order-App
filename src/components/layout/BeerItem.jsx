@@ -38,12 +38,13 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
         );
     } else
         return (
-            <Card>
-                <ul className="grid grid-cols-2">
-                    <li className="flex flex-col">
-                        <p>{name}</p>
+            <Card hover={true}>
+                <ul className="grid grid-cols-2 ">
+                    <li>
+                        <div className="flex">
+                            {name} <ExternalIcon handleClick={openNotif} />
+                        </div>
                         <p>$ {price.toFixed(2)}</p>
-                        <ExternalIcon handleClick={openNotif} />
                     </li>
                     <li className="flex justify-between items-center justify-self-end">
                         <BeerItemAmount

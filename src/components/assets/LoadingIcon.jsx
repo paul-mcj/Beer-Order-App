@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const LoadingIcon = () => {
     return (
         <IconWrapper>
-            <Loading className="animate-spinSlow text-5xl text-base-300" />
+            <Loading className="animate-spinSlow text-5xl text-primary" />
         </IconWrapper>
     );
 };

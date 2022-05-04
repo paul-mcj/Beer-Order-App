@@ -1,5 +1,5 @@
 // components
-import Button from "../components/ui/Button";
+import TextButton from "../components/ui/TextButton";
 import Header from "../components/layout/Header";
 import PageWrapper from "../components/layout/PageWrapper";
 
@@ -12,7 +12,11 @@ const NotFound = () => {
             <div className="flex flex-col items-center">
                 <Header>Oops!</Header>
                 <p className="mb-10">Looks like the page you were looking for does not exist.</p>
-                <Button handleClick={redirectToHomePg}>Go Home</Button>
+                <TextButton
+                    handleClick={redirectToHomePg}
+                    animationType={"pulseDeep"}
+                    btnText="go home"
+                />
             </div>
         </PageWrapper>
     );

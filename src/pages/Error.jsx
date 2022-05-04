@@ -1,5 +1,3 @@
-//fixme: Make sure to include in app description that is potential manufacturing of an error is part of showcasing additional routing skills
-
 // context
 import ErrorContext from "../context/error/ErrorContext";
 
@@ -7,7 +5,7 @@ import ErrorContext from "../context/error/ErrorContext";
 import { useContext } from "react";
 
 // components
-import Button from "../components/ui/Button";
+import TextButton from "../components/ui/TextButton";
 import Header from "../components/layout/Header";
 import WarningIcon from "../components/assets/WarningIcon";
 import PageWrapper from "../components/layout/PageWrapper";
@@ -26,7 +24,11 @@ const Error = () => {
                 </Header>
                 <WarningIcon />
                 <p className="mb-10 text-center">{message}</p>
-                <Button handleClick={redirectToHomePg}>reload</Button>
+                <TextButton
+                    handleClick={redirectToHomePg}
+                    btnText="reload"
+                    animationType="pulseDeep"
+                />
             </div>
         </PageWrapper>
     );

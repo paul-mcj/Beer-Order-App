@@ -1,23 +1,13 @@
-// react
+// react & hooks
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import useAnimation from "../../hooks/use-animation";
 
 // components
 import DropdownIcon from "../assets/DropdownIcon";
 import Button from "./Button";
 
 const SeeMoreButton = ({ handleClick }) => {
-    const [shouldAnimate, setShouldAnimate] = useState(false);
-
-    // after 3 seconds of user not clicking the button, add animation for UX
-    useEffect(() => {
-        const animationTimer = setTimeout(() => {
-            if (!shouldAnimate) setShouldAnimate(() => !shouldAnimate);
-        }, 3000);
-        return () => {
-            clearTimeout(animationTimer);
-        };
-    }, [shouldAnimate]);
+    const { shouldAnimate } = useAnimation();
 
     return (
         <div className="mx-auto mt-10">

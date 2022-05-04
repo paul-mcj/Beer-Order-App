@@ -58,7 +58,7 @@ const Home = () => {
             }
             // update loading context state once all values are gathered
             dispatch({ type: "NOT_LOADING" });
-            console.log(beersArr);
+            // console.log(beersArr); //fixme: uncomment to see raw data
         } else return;
     }, []);
 

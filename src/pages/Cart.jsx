@@ -11,6 +11,7 @@ import CartContext from "../context/cart/CartContext";
 
 // react
 import { useContext } from "react";
+import TextButton from "../components/ui/TextButton";
 
 const Cart = () => {
     const { beers } = useContext(CartContext);
@@ -21,9 +22,7 @@ const Cart = () => {
                 <Header>Looks like your cart is empty!</Header>
                 <div className="grid grid-rows-1 justify-items-center">
                     <Link to="/">
-                        <button className="btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content">
-                            go home
-                        </button>
+                        <TextButton btnText="go home" animationType={"pulseDeep"} />
                     </Link>
                 </div>
             </PageWrapper>

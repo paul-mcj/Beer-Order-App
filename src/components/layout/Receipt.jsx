@@ -3,9 +3,9 @@ import { Fragment, useContext, useState } from "react";
 
 // components
 import Card from "../../components/layout/Card";
-import Button from "../ui/Button";
+// import Button from "../ui/Button";
 import SeeMoreButton from "../ui/SeeMoreButton";
-import PlaceOrderButton from "../ui/PlaceOrderButton";
+import TextButton from "../ui/TextButton";
 import Notification from "./Notification";
 import LoadingIcon from "../assets/LoadingIcon";
 
@@ -91,14 +91,24 @@ const Receipt = () => {
                 </div>
             </div>
             <div className="text-center">
-                {!orderHasBeenPlaced && !isLoading && <PlaceOrderButton handleClick={placeOrder} />}
+                {!orderHasBeenPlaced && !isLoading && (
+                    <TextButton
+                        handleClick={placeOrder}
+                        btnText={"place order"}
+                        animationType={"pulseDeep"}
+                    />
+                )}
                 {orderHasBeenPlaced && isLoading && (
                     <div className="p-5">
                         <LoadingIcon />
                     </div>
                 )}
                 {orderHasBeenPlaced && !isLoading && (
-                    <Button handleClick={redirectToHomePg}>reload</Button>
+                    <TextButton
+                        handleClick={redirectToHomePg}
+                        btnText="reload"
+                        animationType={"pulseDeep"}
+                    />
                 )}
             </div>
         </Fragment>
@@ -121,6 +131,7 @@ const Receipt = () => {
                     {!displayTotals && <SeeMoreButton handleClick={changeDisplayTotalsState} />}
                     {displayTotals && finalAmounts}
                 </Card>
+                <p>go home button??</p>
             </Fragment>
         );
     }

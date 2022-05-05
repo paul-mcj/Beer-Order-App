@@ -5,9 +5,8 @@ export const getBeers = async () => {
         if (!res.ok) throw new Error();
         const data = await res.json();
         // check for too low of abv and fix for more realistic price
-        let price;
-        if (+data[0].abv.toFixed(2) < 6.0) price = +(data[0].abv.toFixed(2) + 6.0);
-        else price = +data[0].abv.toFixed(2);
+        let price = +data[0].abv.toFixed(2);
+        if (price < 6) price = +data[0].abv.toFixed(2) + 6;
         // create a new beer item only with essential properties
         let beer = {
             id: data[0].id,

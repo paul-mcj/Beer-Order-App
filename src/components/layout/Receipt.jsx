@@ -1,5 +1,6 @@
 // react & hooks
 import { Fragment, useContext, useState } from "react";
+import useNotification from "../../hooks/use-notification";
 
 // components
 import Card from "../../components/layout/Card";
@@ -11,7 +12,6 @@ import LoadingIcon from "../assets/LoadingIcon";
 
 // context
 import CartContext from "../../context/cart/CartContext";
-import NotificationContext from "../../context/notification/NotificationContext";
 
 // utils
 import { redirectToHomePg } from "../../utils/functions";
@@ -20,15 +20,16 @@ const Receipt = () => {
     // local vars
     const taxRate = 0.13;
 
-    // local state
+    // component state
     const [displayTotals, setDisplayTotals] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [orderHasBeenPlaced, setOrderHasBeenPlaced] = useState(false);
 
     // context
     const { beers, totalPrice } = useContext(CartContext);
-    const { isNotification, updateNotificationState, closeNotification } =
-        useContext(NotificationContext);
+
+    // custom hook
+    const { isNotification, updateNotificationState } = useNotification();
 
     // reveal total price amounts
     const changeDisplayTotalsState = () => {
@@ -41,12 +42,12 @@ const Receipt = () => {
         setOrderHasBeenPlaced(() => true);
         // wait 3 secs before updating state so LoadingIcon can be seen
         setTimeout(() => {
-            updateNotificationState(() => !isNotification);
+            updateNotificationState();
             setIsLoading(() => false);
         }, 3000);
     };
 
-    // only show beer items that have been selected from the home screen
+    // only show beer items that have been selected from the home screen to appear in the cart component
     const showItems = beers.map((beer) => {
         if (beer.amount > 0) {
             return (
@@ -61,10 +62,12 @@ const Receipt = () => {
                 </div>
             );
         } else {
+            // return to avoid react list error
             return <Fragment key={beer.id} />;
         }
     });
 
+    // used to reduce returned JSX
     const colHeadings = (
         <div className="grid grid-cols-4 justify-items-center mb-2">
             <h1 className="text-lg text-bold">Qty</h1>
@@ -74,6 +77,7 @@ const Receipt = () => {
         </div>
     );
 
+    // used to reduce returned JSX
     const finalAmounts = (
         <Fragment>
             <div className="grid mt-6 grid-cols-4">
@@ -119,7 +123,7 @@ const Receipt = () => {
             <Notification
                 title="Thank-you!"
                 message="Your order has been successfully placed"
-                handleClick={closeNotification}
+                handleClick={updateNotificationState}
             />
         );
     } else {

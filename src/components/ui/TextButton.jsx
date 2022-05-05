@@ -1,5 +1,4 @@
 // react & hooks
-import { useEffect } from "react";
 import useAnimation from "../../hooks/use-animation";
 import PropTypes from "prop-types";
 

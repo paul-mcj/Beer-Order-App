@@ -13,7 +13,7 @@ const useAnimation = () => {
         };
     }, [shouldAnimate]);
 
-    return { shouldAnimate, setShouldAnimate };
+    return { shouldAnimate };
 };
 
 export default useAnimation;

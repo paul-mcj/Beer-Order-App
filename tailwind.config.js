@@ -6,6 +6,7 @@ module.exports = {
                 spinSlow: "spinSlow 2s linear infinite",
                 pulseDeep: "pulseDeep 3s ease-out infinite",
                 bounceDown: "bounceDown 1s infinite",
+                quickPing: "quickPing 0.25s cubic-bezier(0, 0, 0.2, 1) infinite",
             },
             keyframes: {
                 spinSlow: {
@@ -29,6 +30,12 @@ module.exports = {
                     "50%": {
                         transform: "translateY(25%)",
                         animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+                    },
+                },
+                quickPing: {
+                    "75%, 100%": {
+                        transform: "scale(2)",
+                        opacity: "0",
                     },
                 },
             },

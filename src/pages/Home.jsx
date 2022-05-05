@@ -1,25 +1,28 @@
-// React & Hooks
+// react & hooks
 import React, { Fragment, useCallback, useContext, useEffect, useState } from "react";
 
-// React-router-dom
+// react-router-dom
 import { Navigate } from "react-router-dom";
 
-// Components
+// components
 import Ontap from "../components/layout/Ontap";
 import WelcomeText from "../components/layout/WelcomeText";
 import LoadingIcon from "../components/assets/LoadingIcon";
 import Pagination from "../components/ui/Pagination";
 import PageWrapper from "../components/layout/PageWrapper";
 
-// Context
+// context
 import CartContext from "../context/cart/CartContext";
 import { getBeers } from "../context/cart/CartActions";
 import ErrorContext from "../context/error/ErrorContext";
 
-// Utils
+// utils
 import { validateArr } from "../utils/functions";
 
-// Global variables
+// framer-motion
+import { motion } from "framer-motion";
+
+// global variables
 const BEERS_ARR = process.env.REACT_APP_BEERS_ARR_LENGTH;
 
 const Home = () => {
@@ -58,7 +61,6 @@ const Home = () => {
             }
             // update loading context state once all values are gathered
             dispatch({ type: "NOT_LOADING" });
-            // console.log(beersArr); //fixme: uncomment to see raw data
         } else return;
     }, []);
 
@@ -76,21 +78,34 @@ const Home = () => {
 
     // check ErrorContext and redirect to Error page if an error occurs when fetching data
     if (error) {
-        return <Navigate to="/error" />;
+        return (
+            // <motion.div
+            //     initial={{ opacity: 0 }}
+            //     animate={{ opacity: 1 }}
+            //     exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            // >
+            <Navigate to="/error" />
+            // </motion.div>
+        );
     } else {
         return (
-            // fixme: animation to bring all components into the page thorough quick counter-dissolve
-            <PageWrapper>
-                {isLoading ? (
-                    <LoadingIcon />
-                ) : (
-                    <Fragment>
-                        <WelcomeText />
-                        <Ontap beers={beers} pageNum={pageNum} />
-                        <Pagination pageNum={pageNum} setCurrentPage={setCurrentPage} />
-                    </Fragment>
-                )}
-            </PageWrapper>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            >
+                <PageWrapper>
+                    {isLoading ? (
+                        <LoadingIcon />
+                    ) : (
+                        <Fragment>
+                            <WelcomeText />
+                            <Ontap beers={beers} pageNum={pageNum} />
+                            <Pagination pageNum={pageNum} setCurrentPage={setCurrentPage} />
+                        </Fragment>
+                    )}
+                </PageWrapper>
+            </motion.div>
         );
     }
 };

@@ -7,24 +7,17 @@ import Notification from "./Notification";
 // react & hooks
 import PropTypes from "prop-types";
 import { useContext, useState } from "react";
+import useNotification from "../../hooks/use-notification";
 
-// context
-import NotificationContext from "../../context/notification/NotificationContext";
-import CartContext from "../../context/cart/CartContext";
+// framer-motion
+import { motion } from "framer-motion";
 
 const BeerItem = ({ name, amount, id, price, est, description, food }) => {
     // local state
     const [currentItemAmount, setCurrentItemAmount] = useState(amount);
 
-    // context
-    const { isNotification, updateNotificationState, closeNotification } =
-        useContext(NotificationContext);
-    const { beers, dispatch, totalItems, totalPrice } = useContext(CartContext);
-
-    const openNotif = (e) => {
-        updateNotificationState(() => !isNotification);
-        // console.log(e.target);
-    };
+    // custom hook
+    const { isNotification, updateNotificationState } = useNotification();
 
     if (isNotification) {
         return (
@@ -33,16 +26,23 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
                 message={`Est. ${est}`}
                 description={description}
                 food={food}
-                handleClick={closeNotification}
+                handleClick={updateNotificationState}
             />
         );
     } else
         return (
+            // fixme: animation to bring all components into the page thorough quick counter-dissolve
+            // <motion.div
+            //     className="flex flex-col gap-3"
+            //     initial={{ opacity: 0 }}
+            //     animate={{ opacity: 1 }}
+            //     exit={{ opacity: 0, transition: { duration: 3 } }}
+            // >
             <Card hover={true}>
                 <ul className="grid grid-cols-2 ">
                     <li>
                         <div className="flex">
-                            {name} <ExternalIcon handleClick={openNotif} />
+                            {name} <ExternalIcon handleClick={updateNotificationState} />
                         </div>
                         <p>$ {price.toFixed(2)}</p>
                     </li>
@@ -56,6 +56,7 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
                     </li>
                 </ul>
             </Card>
+            // </motion.div>
         );
 };
 

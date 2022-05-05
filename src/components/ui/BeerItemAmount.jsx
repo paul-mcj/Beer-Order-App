@@ -1,5 +1,6 @@
 // react & hooks
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState } from "react";
+import useNotification from "../../hooks/use-notification";
 import PropTypes from "prop-types";
 
 // components
@@ -10,19 +11,29 @@ import MoreIcon from "../assets/MoreIcon";
 
 // context
 import CartContext from "../../context/cart/CartContext";
-import NotificationContext from "../../context/notification/NotificationContext";
 
 const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) => {
+    // component state
+    const [shouldAnimate, setShouldAnimate] = useState(false);
+
     // context
     const { dispatch, totalItems, totalPrice } = useContext(CartContext);
-    const { isNotification, updateNotificationState, closeNotification } =
-        useContext(NotificationContext);
 
-    // beer item state is quickly updated to be one less
+    // custom hook
+    const { isNotification, updateNotificationState } = useNotification();
+
+    // clear animation by updating component state
+    const clearAnimation = () => {
+        setTimeout(() => {
+            setShouldAnimate(() => false);
+        }, 250);
+    };
+
+    // subtract one beer item from and cart context
     const oneLess = () => {
-        // validation so that amount cannot be less than zero (else call notification)
+        // validation so that beer item amount cannot be less than zero (else call notification panel to display error)
         if (currentItemAmount - 1 < 0) {
-            updateNotificationState(() => !isNotification);
+            updateNotificationState();
         } else {
             setCurrentItemAmount((prevAmount) => prevAmount - 1);
             dispatch({
@@ -31,10 +42,12 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
             });
             dispatch({ type: "UPDATE_TOTAL_ITEMS", payload: totalItems - 1 });
             dispatch({ type: "UPDATE_TOTAL_PRICE", payload: totalPrice - price });
+            setShouldAnimate(() => true);
+            clearAnimation();
         }
     };
 
-    // add only one more beer item amount to current state and context
+    // add only one more beer item amount to cart context
     const oneMore = () => {
         setCurrentItemAmount((prevAmount) => prevAmount + 1);
         dispatch({
@@ -43,6 +56,8 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
         });
         dispatch({ type: "UPDATE_TOTAL_ITEMS", payload: totalItems + 1 });
         dispatch({ type: "UPDATE_TOTAL_PRICE", payload: totalPrice + price });
+        setShouldAnimate(() => true);
+        clearAnimation();
     };
 
     if (isNotification) {
@@ -50,7 +65,7 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
             <Notification
                 title="Notice"
                 message="Amount cannot be less than 0"
-                handleClick={closeNotification}
+                handleClick={updateNotificationState}
             />
         );
     } else {
@@ -59,7 +74,11 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
                 <Button handleClick={oneLess}>
                     <LessIcon />
                 </Button>
-                <span className="mx-5">{currentItemAmount}</span>
+                {shouldAnimate ? (
+                    <span className="mx-5 animate-quickPing">{currentItemAmount}</span>
+                ) : (
+                    <span className="mx-5">{currentItemAmount}</span>
+                )}
                 <Button handleClick={oneMore}>
                     <MoreIcon />
                 </Button>

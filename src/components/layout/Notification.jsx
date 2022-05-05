@@ -13,18 +13,44 @@ const Backdrop = () => {
 };
 
 const Overlay = ({ title, message, handleClick, description, food }) => {
+    let foodPairing, addClasses;
+    // reduce food array into <li> elements
+    if (food) {
+        foodPairing = (
+            <div className="flex flex-col items-center">
+                <ul className="text-accent text-lg font-bold">Food Pairings</ul>
+                {food.map((foodItem) => (
+                    <li key={Math.random()} className="text-secondary-content">
+                        {foodItem}
+                    </li>
+                ))}
+            </div>
+        );
+
+        // conditionally set these classes for notification
+        addClasses = "mx-24 bottom-24 overflow-auto";
+    }
+
     return (
         <div className="grid justify-items-center">
-            <div className="z-10 bg-neutral fixed top-20">
+            <div className={`z-10 bg-neutral fixed top-24 ${addClasses}`}>
                 <section className="flex flex-col m-10 items-center">
                     <Header>
-                        <p className="text-secondary-content">{title}</p>
+                        <p className="text-primary">{title}</p>
                     </Header>
-                    <p className="text-secondary-content mb-5">{message}</p>
-                    {description && <p>{description}</p>}
-                    {food && <ul>food array goes here</ul>}
+                    {description ? (
+                        <p className="text-secondary-content italic -mt-10 mb-5">{message}</p>
+                    ) : (
+                        <p className="text-secondary-content mb-5">{message}</p>
+                    )}
+                    {description && (
+                        <p className="text-center text-secondary-content mb-5 px-12">
+                            {description}
+                        </p>
+                    )}
+                    {food && foodPairing}
                     <button
-                        className="btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content"
+                        className="mt-10 btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content"
                         onClick={handleClick}
                     >
                         continue
@@ -37,9 +63,9 @@ const Overlay = ({ title, message, handleClick, description, food }) => {
 
 // assign proptypes
 Overlay.propTypes = {
-    title: PropTypes.string,
-    message: PropTypes.string,
-    handleClick: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
     description: PropTypes.string,
     food: PropTypes.array,
 };
@@ -64,9 +90,9 @@ const Notification = ({ title, message, handleClick, description, food }) => {
 
 // assign proptypes
 Notification.propTypes = {
-    title: PropTypes.string,
-    message: PropTypes.string,
-    handleClick: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    handleClick: PropTypes.func.isRequired,
     description: PropTypes.string,
     food: PropTypes.array,
 };

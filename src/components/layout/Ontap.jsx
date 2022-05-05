@@ -14,6 +14,9 @@ const Ontap = ({ beers, pageNum }) => {
             name={beer.name}
             price={beer.price}
             amount={beer.amount}
+            description={beer.description}
+            est={beer.est}
+            food={beer.food}
         />
     ));
 

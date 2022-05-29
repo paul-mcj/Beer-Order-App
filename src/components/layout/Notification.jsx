@@ -33,7 +33,7 @@ const Overlay = ({ title, message, handleClick, description, food }) => {
 
     return (
         <div className="grid justify-items-center">
-            <div className={`z-10 bg-neutral fixed top-24 ${addClasses}`}>
+            <div className={`z-10 bg-neutral fixed rounded top-24 ${addClasses}`}>
                 <section className="flex flex-col m-10 items-center">
                     <Header>
                         <p className="text-primary">{title}</p>

@@ -31,7 +31,7 @@ const Cart = () => {
                     <div className="flex flex-col items-center">
                         <Header>Looks like your cart is empty!</Header>
                         <Link to="/">
-                            <TextButton btnText="go home" animationType={"pulseDeep"} />
+                            <TextButton btnText="go home" animationType="pulseDeep" />
                         </Link>
                     </div>
                 </PageWrapper>
@@ -41,16 +41,15 @@ const Cart = () => {
 
     return (
         <motion.div
+            className="grid h-screen"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
         >
-            <div className="mt-10">
-                <PageWrapper>
-                    <Header>Your Cart</Header>
-                    <Receipt />
-                </PageWrapper>
-            </div>
+            <PageWrapper>
+                <Header>Your Cart</Header>
+                <Receipt />
+            </PageWrapper>
         </motion.div>
     );
 };

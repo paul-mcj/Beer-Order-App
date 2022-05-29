@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const AboutIcon = () => {
     return (
         <IconWrapper>
-            <Info className="text-2xl" />
+            <Info />
         </IconWrapper>
     );
 };

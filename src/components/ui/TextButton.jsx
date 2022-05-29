@@ -7,21 +7,14 @@ const TextButton = ({ handleClick, btnText, animationType }) => {
 
     return (
         <div className="mx-auto mt-10">
-            {shouldAnimate ? (
-                <button
-                    onClick={handleClick}
-                    className={`animate-${animationType} btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content`}
-                >
-                    {btnText}
-                </button>
-            ) : (
-                <button
-                    onClick={handleClick}
-                    className="btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content"
-                >
-                    {btnText}
-                </button>
-            )}
+            <button
+                onClick={handleClick}
+                className={`btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content ${
+                    shouldAnimate && `animate-${animationType}`
+                }`}
+            >
+                {btnText}
+            </button>
         </div>
     );
 };

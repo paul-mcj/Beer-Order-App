@@ -17,9 +17,8 @@ const Navbar = () => {
     const { error } = useContext(ErrorContext);
 
     return (
-        <nav className="navbar bg-base-300 mt-5 rounded flex px-10">
-            <div className="flex-1 text-3xl font-bold">Beer Order App</div>
-            <div className="flex flex-end justify-between gap-5">
+        <nav className="rounded fixed top-20 left-0 z-10">
+            <div className="flex flex-col justify-between gap-5">
                 <Link to="/">
                     <Button>
                         <HomeIcon />

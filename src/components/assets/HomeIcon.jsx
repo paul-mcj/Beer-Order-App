@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const HomeIcon = () => {
     return (
         <IconWrapper>
-            <Home className="text-2xl" />
+            <Home />
         </IconWrapper>
     );
 };

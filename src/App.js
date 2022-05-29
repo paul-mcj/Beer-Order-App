@@ -17,15 +17,16 @@ const App = () => {
         <CartProvider>
             <ErrorProvider>
                 <Router>
+                    <Navbar />
                     <div className="grid h-screen grid-rows-auto overflow-scroll">
-                        <div className="px-20 row-start-1 row-span-1">
-                            <Navbar />
+                        <div className="justify-self-center w-2/3">
+                            <h1 className="rounded text-center font-bold text-2xl xsm:text-3xl bg-base-300 py-2 xsm:py-4 mt-2">
+                                Beer Order App
+                            </h1>
                         </div>
-                        <div className="row-start-2">
-                            <main className="container mx-auto px-4 py-10">
-                                <AnimatedRoutes />
-                            </main>
-                        </div>
+                        <main className="container mx-auto pb-10">
+                            <AnimatedRoutes />
+                        </main>
                         <Footer />
                     </div>
                 </Router>

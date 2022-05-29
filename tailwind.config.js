@@ -40,6 +40,9 @@ module.exports = {
                 },
             },
         },
+        screens: {
+            xsm: "470px",
+        },
     },
     plugins: [require("daisyui")],
 };

@@ -8,7 +8,7 @@ const PaginationButton = ({ children, active, setCurrentPage }) => {
                 className="btn btn-active btn-disabled"
                 onClick={setCurrentPage.bind(null, +children)}
             >
-                {children}
+                <span className="text-xs">{children}</span>
             </button>
         );
     else
@@ -17,7 +17,7 @@ const PaginationButton = ({ children, active, setCurrentPage }) => {
                 className="btn btn-ghost hover:text-primary"
                 onClick={setCurrentPage.bind(null, +children)}
             >
-                {children}
+                <span className="text-xs">{children}</span>
             </button>
         );
 };

@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 
 const Header = ({ children }) => {
     return (
-        <header className="font-bold text-2xl text-center text-secondary-focus mb-10">
-            {children}
+        <header className="grid">
+            <div className="font-bold text-lg xsm:text-xl text-center justify-self-center text-secondary-focus mb-10 xsm:mt-5">
+                {children}
+            </div>
         </header>
     );
 };

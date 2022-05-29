@@ -14,7 +14,7 @@ const About = () => {
         >
             <PageWrapper>
                 <Header>About This App</Header>
-                <div className="flex flex-col text-center gap-y-10 px-12">
+                <div className="flex flex-col text-center gap-y-10">
                     <p className="leading-8">
                         This project utilizes React functional components and react router v6 to
                         create a SPA that allows users to simulate adding specific items to a cart
@@ -62,7 +62,7 @@ const About = () => {
                             href="https://github.com/paul-mcj/"
                         >
                             Github
-                        </a>{" "}
+                        </a>
                         profile.
                     </p>
                 </div>

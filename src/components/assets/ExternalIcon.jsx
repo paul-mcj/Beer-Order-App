@@ -6,8 +6,8 @@ import { BiLinkExternal as MoreInfo } from "react-icons/bi";
 
 const ExternalIcon = ({ handleClick }) => {
     return (
-        <button onClick={handleClick} className="ml-5 mt-1 self-start">
-            <MoreInfo className="hover:text-accent" />
+        <button onClick={handleClick} className="absolute right-2 top-2">
+            <MoreInfo className="text-accent hover:text-accent-focus" />
         </button>
     );
 };

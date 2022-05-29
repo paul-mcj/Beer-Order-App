@@ -4,7 +4,6 @@ import useNotification from "../../hooks/use-notification";
 
 // components
 import Card from "../../components/layout/Card";
-// import Button from "../ui/Button";
 import SeeMoreButton from "../ui/SeeMoreButton";
 import TextButton from "../ui/TextButton";
 import Notification from "./Notification";
@@ -55,10 +54,10 @@ const Receipt = () => {
                     key={beer.id}
                     className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2"
                 >
-                    <p className="text-center">{beer.amount}</p>
-                    <p className="text-center -mx-10">{beer.name}</p>
-                    <p>$ {beer.price.toFixed(2)}</p>
-                    <p>$ {(beer.price * beer.amount).toFixed(2)}</p>
+                    <p className="text-center text-xs">{beer.amount}</p>
+                    <p className="text-center -mx-10 text-xs">{beer.name}</p>
+                    <p className="text-xs">${beer.price.toFixed(2)}</p>
+                    <p className="text-xs">${(beer.price * beer.amount).toFixed(2)}</p>
                 </div>
             );
         } else {
@@ -70,10 +69,10 @@ const Receipt = () => {
     // used to reduce returned JSX
     const colHeadings = (
         <div className="grid grid-cols-4 justify-items-center mb-2">
-            <h1 className="text-lg text-bold">Qty</h1>
-            <h1 className="text-lg text-bold">Description</h1>
-            <h1 className="text-lg text-bold">Unit Price</h1>
-            <h1 className="text-lg text-bold">Total</h1>
+            <h1 className="text-sm text-bold">Qty</h1>
+            <h1 className="text-sm text-bold">Description</h1>
+            <h1 className="text-sm text-bold">Unit Price</h1>
+            <h1 className="text-sm text-bold">Total</h1>
         </div>
     );
 
@@ -82,15 +81,19 @@ const Receipt = () => {
         <Fragment>
             <div className="grid mt-6 grid-cols-4">
                 <div className="grid-cols-3 col-start-3">
-                    <h1 className="text-right">Subtotal:</h1>
-                    <h1 className="text-right">Taxes:</h1>
-                    <h1 className="text-right text-lg font-bold">Total:</h1>
+                    <h1 className="text-right text-xs">Subtotal:</h1>
+                    <h1 className="text-right text-xs">Taxes:</h1>
+                    <h1 className="text-right text-sm font-bold">Total:</h1>
                 </div>
-                <div className="grid-cols-3 col-start-4 ml-10">
-                    <h1 className="text-left">$ {Math.abs(totalPrice).toFixed(2)}</h1>
-                    <h1 className="text-left">$ {Math.abs(totalPrice * taxRate).toFixed(2)}</h1>
-                    <h1 className="text-left font-bold text-lg self-center">
-                        $ {Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}
+                {/* fixme: fix padding margins very minimally depending on if the price is < $100 (ml-7), > $100 (ml-8), or > $1000 (ml-9) */}
+                {/* {Math.abs(totalPrice + totalPrice * taxRate).toFixed(2) > } */}
+                <div className="grid-cols-3 col-start-4 ml-8">
+                    <h1 className="text-left text-xs">${Math.abs(totalPrice).toFixed(2)}</h1>
+                    <h1 className="text-left text-xs">
+                        ${Math.abs(totalPrice * taxRate).toFixed(2)}
+                    </h1>
+                    <h1 className="text-left font-bold text-sm self-center">
+                        ${Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}
                     </h1>
                 </div>
             </div>
@@ -135,7 +138,6 @@ const Receipt = () => {
                     {!displayTotals && <SeeMoreButton handleClick={changeDisplayTotalsState} />}
                     {displayTotals && finalAmounts}
                 </Card>
-                <p>go home button??</p>
             </Fragment>
         );
     }

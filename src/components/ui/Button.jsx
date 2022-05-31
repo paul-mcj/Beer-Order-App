@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Button = ({ children, handleClick }) => {
     return (
         <button
-            className="uppercase p-2 font-bold hover:text-secondary-focus"
+            className="btn-xs xsm:btn-sm uppercase p-2 font-bold hover:text-secondary-focus"
             onClick={handleClick}
         >
             {children}

@@ -1,19 +1,15 @@
-// react
-import PropTypes from "prop-types";
+// components
+import IconWrapper from "../layout/IconWrapper";
 
 // react-icons
 import { BiLinkExternal as MoreInfo } from "react-icons/bi";
 
-const ExternalIcon = ({ handleClick }) => {
+const ExternalIcon = () => {
     return (
-        <button onClick={handleClick} className="absolute right-2 top-2">
+        <IconWrapper>
             <MoreInfo className="text-accent hover:text-accent-focus" />
-        </button>
+        </IconWrapper>
     );
-};
-
-ExternalIcon.propTypes = {
-    handleClick: PropTypes.func,
 };
 
 export default ExternalIcon;

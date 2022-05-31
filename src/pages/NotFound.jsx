@@ -2,6 +2,7 @@
 import TextButton from "../components/ui/TextButton";
 import Header from "../components/layout/Header";
 import PageWrapper from "../components/layout/PageWrapper";
+import NotFoundIcon from "../components/assets/NotFoundIcon";
 
 // utils
 import { redirectToHomePg } from "../utils/functions";
@@ -17,9 +18,10 @@ const NotFound = () => {
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
         >
             <PageWrapper>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center h-screen px-6">
                     <Header>Oops!</Header>
-                    <p className="mb-10">
+                    <NotFoundIcon />
+                    <p className="text-center leading-6 xsm:leading-8 mt-6 text-sm xsm:text-base">
                         Looks like the page you were looking for does not exist.
                     </p>
                     <TextButton

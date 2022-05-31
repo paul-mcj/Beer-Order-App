@@ -9,7 +9,12 @@ export const useNotification = () => {
         setIsNotification(() => !isNotification);
     };
 
-    return { isNotification, updateNotificationState };
+    // closes the notification panel
+    const closeNotification = () => {
+        setIsNotification(() => false);
+    };
+
+    return { isNotification, closeNotification, updateNotificationState };
 };
 
 export default useNotification;

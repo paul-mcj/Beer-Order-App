@@ -28,7 +28,7 @@ const Cart = () => {
                 exit={{ opacity: 0, transition: { duration: 0.25 } }}
             >
                 <PageWrapper>
-                    <div className="flex flex-col items-center">
+                    <div className="text-center">
                         <Header>Looks like your cart is empty!</Header>
                         <Link to="/">
                             <TextButton btnText="go home" animationType="pulseDeep" />

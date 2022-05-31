@@ -50,16 +50,16 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
                     <li>
                         {screenSize > 470 ? (
                             <p
-                                className="text-md link link-accent xsm:text-lg font-bold"
+                                className="link link-accent text-sm xsm:text-base font-bold"
                                 onClick={updateNotificationState}
                             >
                                 {name}
                             </p>
                         ) : (
-                            <p className="text-md xsm:text-lg font-bold">{name}</p>
+                            <p className="text-sm xsm:text-base font-bold">{name}</p>
                         )}
 
-                        <p className="text-md xsm:text-lg italic">$ {price.toFixed(2)}</p>
+                        <p className="text-sm xsm:text-base italic">$ {price.toFixed(2)}</p>
                     </li>
                     <li className="flex justify-between items-center justify-self-end mt-4">
                         <BeerItemAmount

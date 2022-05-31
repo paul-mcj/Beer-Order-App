@@ -9,7 +9,7 @@ const TextButton = ({ handleClick, btnText, animationType }) => {
         <div className="mx-auto mt-10">
             <button
                 onClick={handleClick}
-                className={`btn border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content ${
+                className={`btn btn-xs xsm:btn-sm border-none bg-secondary hover:bg-secondary-focus hover:text-base-300 text-secondary-content ${
                     shouldAnimate && `animate-${animationType}`
                 }`}
             >

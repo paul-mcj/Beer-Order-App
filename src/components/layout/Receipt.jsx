@@ -16,9 +16,6 @@ import CartContext from "../../context/cart/CartContext";
 import { redirectToHomePg } from "../../utils/functions";
 
 const Receipt = () => {
-    // local vars
-    const taxRate = 0.13;
-
     // component state
     const [displayTotals, setDisplayTotals] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +26,12 @@ const Receipt = () => {
 
     // custom hook
     const { isNotification, updateNotificationState } = useNotification();
+
+    // local vars
+    const taxRate = 0.13;
+    const taxes = Math.abs(totalPrice * taxRate).toFixed(2);
+    const subTotal = Math.abs(totalPrice).toFixed(2);
+    const totalAmount = Math.abs(totalPrice + totalPrice * taxRate).toFixed(2);
 
     // reveal total price amounts
     const changeDisplayTotalsState = () => {
@@ -54,10 +57,10 @@ const Receipt = () => {
                     key={beer.id}
                     className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2"
                 >
-                    <p className="text-center text-xs">{beer.amount}</p>
-                    <p className="text-center -mx-10 text-xs">{beer.name}</p>
-                    <p className="text-xs">${beer.price.toFixed(2)}</p>
-                    <p className="text-xs">${(beer.price * beer.amount).toFixed(2)}</p>
+                    <p className="text-center text-xs xsm:text-sm">{beer.amount}</p>
+                    <p className="text-center -mx-10 text-xs xsm:text-sm">{beer.name}</p>
+                    <p className="text-xs xsm:text-sm">${beer.price.toFixed(2)}</p>
+                    <p className="text-xs xsm:text-sm">${(beer.price * beer.amount).toFixed(2)}</p>
                 </div>
             );
         } else {
@@ -69,32 +72,26 @@ const Receipt = () => {
     // used to reduce returned JSX
     const colHeadings = (
         <div className="grid grid-cols-4 justify-items-center mb-2">
-            <h1 className="text-sm text-bold">Qty</h1>
-            <h1 className="text-sm text-bold">Description</h1>
-            <h1 className="text-sm text-bold">Unit Price</h1>
-            <h1 className="text-sm text-bold">Total</h1>
+            <h1 className="text-sm xsm:text-base text-bold">Qty</h1>
+            <h1 className="text-sm xsm:text-base text-bold">Item</h1>
+            <h1 className="text-sm xsm:text-base text-bold">Unit Price</h1>
+            <h1 className="text-sm xsm:text-base text-bold">Total</h1>
         </div>
     );
 
     // used to reduce returned JSX
     const finalAmounts = (
         <Fragment>
-            <div className="grid mt-6 grid-cols-4">
-                <div className="grid-cols-3 col-start-3">
-                    <h1 className="text-right text-xs">Subtotal:</h1>
-                    <h1 className="text-right text-xs">Taxes:</h1>
-                    <h1 className="text-right text-sm font-bold">Total:</h1>
+            <div className="grid mt-8 mb-4 grid-cols-2">
+                <div className="grid-cols-3 col-start-1 mr-4 justify-self-end">
+                    <h1 className="text-right text-xs xsm:text-sm">Subtotal:</h1>
+                    <h1 className="text-right text-xs xsm:text-sm">Taxes:</h1>
+                    <h1 className="text-right text-sm xsm:text-base font-bold">Total:</h1>
                 </div>
-                {/* fixme: fix padding margins very minimally depending on if the price is < $100 (ml-7), > $100 (ml-8), or > $1000 (ml-9) */}
-                {/* {Math.abs(totalPrice + totalPrice * taxRate).toFixed(2) > } */}
-                <div className="grid-cols-3 col-start-4 ml-8">
-                    <h1 className="text-left text-xs">${Math.abs(totalPrice).toFixed(2)}</h1>
-                    <h1 className="text-left text-xs">
-                        ${Math.abs(totalPrice * taxRate).toFixed(2)}
-                    </h1>
-                    <h1 className="text-left font-bold text-sm self-center">
-                        ${Math.abs(totalPrice + totalPrice * taxRate).toFixed(2)}
-                    </h1>
+                <div className="grid-cols-3 col-start-2 ml-4">
+                    <h1 className="text-left text-xs xsm:text-sm">${subTotal}</h1>
+                    <h1 className="text-left text-xs xsm:text-sm">${taxes}</h1>
+                    <h1 className="text-left font-bold text-sm xsm:text-base">${totalAmount}</h1>
                 </div>
             </div>
             <div className="text-center">
@@ -125,8 +122,8 @@ const Receipt = () => {
         return (
             <Notification
                 title="Thank-you!"
-                message="Your order has been successfully placed"
-                handleClick={updateNotificationState}
+                message="Your order has been successfully placed!"
+                handleClick={redirectToHomePg}
             />
         );
     } else {

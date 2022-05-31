@@ -5,19 +5,19 @@ const PaginationButton = ({ children, active, setCurrentPage }) => {
     if (active)
         return (
             <button
-                className="btn btn-active btn-disabled"
+                className="btn btn-active btn-base xsm:btn-lg btn-disabled"
                 onClick={setCurrentPage.bind(null, +children)}
             >
-                <span className="text-xs">{children}</span>
+                <span className="text-xs xsm:text-sm">{children}</span>
             </button>
         );
     else
         return (
             <button
-                className="btn btn-ghost hover:text-primary"
+                className="btn btn-ghost hover:text-primary btn-base xsm:btn-lg"
                 onClick={setCurrentPage.bind(null, +children)}
             >
-                <span className="text-xs">{children}</span>
+                <span className="text-xs xsm:text-sm">{children}</span>
             </button>
         );
 };

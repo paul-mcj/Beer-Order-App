@@ -20,7 +20,7 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
     const { dispatch, totalItems, totalPrice } = useContext(CartContext);
 
     // custom hook
-    const { isNotification, updateNotificationState } = useNotification();
+    const { isNotification, closeNotification, updateNotificationState } = useNotification();
 
     // clear animation by updating component state
     const clearAnimation = () => {
@@ -66,6 +66,7 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
                 title="Notice"
                 message="Amount cannot be less than 0"
                 handleClick={updateNotificationState}
+                closeNotification={closeNotification}
             />
         );
     } else {

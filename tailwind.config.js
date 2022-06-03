@@ -7,6 +7,7 @@ module.exports = {
                 pulseDeep: "pulseDeep 3s ease-out infinite",
                 bounceDown: "bounceDown 1s infinite",
                 quickPing: "quickPing 0.25s cubic-bezier(0, 0, 0.2, 1) infinite",
+                fadeIn: "fadeIn 0.5s ease-in",
             },
             keyframes: {
                 spinSlow: {
@@ -38,10 +39,19 @@ module.exports = {
                         opacity: "0",
                     },
                 },
+                fadeIn: {
+                    "0%": {
+                        opacity: "0",
+                    },
+                    "100%": {
+                        opacity: "1",
+                    },
+                },
             },
         },
         screens: {
             xsm: "470px",
+            tablet: "800px",
         },
     },
     plugins: [require("daisyui")],

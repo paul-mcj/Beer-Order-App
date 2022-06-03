@@ -24,7 +24,7 @@ const App = () => {
                                 Beer Order App
                             </h1>
                         </div>
-                        <main className="container mx-auto pb-10">
+                        <main className="container mx-auto pb-10 h-full">
                             <AnimatedRoutes />
                         </main>
                         <Footer />

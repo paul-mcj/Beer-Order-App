@@ -1,4 +1,4 @@
-// components
+//components
 import IconWrapper from "../layout/IconWrapper";
 
 // react-icons

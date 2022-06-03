@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 // components
-import PaginationButton from "./PaginationButton";
+import PaginationButton from "../ui/PaginationButton";
 
 const Pagination = ({ pageNum, setCurrentPage }) => {
     const activeButton = (num) => (

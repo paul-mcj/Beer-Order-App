@@ -8,7 +8,7 @@ import { Navigate } from "react-router-dom";
 import Ontap from "../components/layout/Ontap";
 import WelcomeText from "../components/layout/WelcomeText";
 import LoadingIcon from "../components/assets/LoadingIcon";
-import Pagination from "../components/ui/Pagination";
+import Pagination from "../components/layout/Pagination";
 import PageWrapper from "../components/layout/PageWrapper";
 
 // context
@@ -70,7 +70,7 @@ const Home = () => {
             getApiData();
             dispatch({ type: "IS_LOADING" });
         }
-    }, []);
+    }, [dispatch, beers, getApiData]);
 
     const setCurrentPage = (num) => {
         setPageNum(() => num);

@@ -1,10 +1,13 @@
 // react & hooks
 import PropTypes from "prop-types";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 
-// Components
+// components
 import BeerItem from "./BeerItem";
 import GroupBeerItems from "./GroupBeerItems";
+
+// context
+import { alphabetize } from "../../context/cart/CartActions";
 
 const Ontap = ({ beers, pageNum }) => {
     const showBeers = beers.map((beer) => (
@@ -20,8 +23,15 @@ const Ontap = ({ beers, pageNum }) => {
         />
     ));
 
+    // useEffect(() => {
+    //     if (beers.length === 12) alphabetize();
+    // }, [beers]);
+
     return (
         <Fragment>
+            <button className="btn" onClick={alphabetize.bind(null, beers)}>
+                alpha
+            </button>
             {pageNum === 1 && <GroupBeerItems>{showBeers.slice(0, 4)}</GroupBeerItems>}
             {pageNum === 2 && <GroupBeerItems>{showBeers.slice(4, 8)}</GroupBeerItems>}
             {pageNum === 3 && <GroupBeerItems>{showBeers.slice(8, 12)}</GroupBeerItems>}

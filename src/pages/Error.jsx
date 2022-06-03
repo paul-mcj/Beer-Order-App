@@ -26,7 +26,7 @@ const Error = () => {
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
         >
             <PageWrapper>
-                <div className="flex flex-col items-center h-screen px-6">
+                <div className="flex flex-col items-center h-full px-6">
                     <Header>
                         <p>Warning!</p>
                     </Header>

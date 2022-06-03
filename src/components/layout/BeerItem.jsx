@@ -1,7 +1,7 @@
 // components
 import Card from "./Card";
 import BeerItemAmount from "../ui/BeerItemAmount";
-import ExternalIcon from "../assets/ExternalIcon";
+import ExternalButton from "../ui/ExternalButton";
 import Notification from "./Notification";
 
 // react & hooks
@@ -33,6 +33,7 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
                 description={description}
                 food={food}
                 handleClick={updateNotificationState}
+                btnText="continue"
             />
         );
     } else
@@ -45,10 +46,10 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
             //     exit={{ opacity: 0, transition: { duration: 3 } }}
             // >
             <Card hover={true}>
-                {screenSize < 470 && <ExternalIcon handleClick={updateNotificationState} />}
+                {screenSize < 470 && <ExternalButton handleClick={updateNotificationState} />}
                 <ul className="grid grid-row-2 xsm:grid-cols-2">
                     <li>
-                        {screenSize > 470 ? (
+                        {screenSize >= 470 ? (
                             <p
                                 className="link link-accent text-sm xsm:text-base font-bold"
                                 onClick={updateNotificationState}

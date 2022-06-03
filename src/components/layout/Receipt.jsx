@@ -52,6 +52,7 @@ const Receipt = () => {
     // only show beer items that have been selected from the home screen to appear in the cart component
     const showItems = beers.map((beer) => {
         if (beer.amount > 0) {
+            console.log(beer);
             return (
                 <div
                     key={beer.id}
@@ -98,8 +99,8 @@ const Receipt = () => {
                 {!orderHasBeenPlaced && !isLoading && (
                     <TextButton
                         handleClick={placeOrder}
-                        btnText={"place order"}
-                        animationType={"pulseDeep"}
+                        btnText="place order"
+                        animationType="pulseDeep"
                     />
                 )}
                 {orderHasBeenPlaced && isLoading && (
@@ -111,7 +112,7 @@ const Receipt = () => {
                     <TextButton
                         handleClick={redirectToHomePg}
                         btnText="reload"
-                        animationType={"pulseDeep"}
+                        animationType="pulseDeep"
                     />
                 )}
             </div>
@@ -123,6 +124,7 @@ const Receipt = () => {
             <Notification
                 title="Thank-you!"
                 message="Your order has been successfully placed!"
+                btnText="reload"
                 handleClick={redirectToHomePg}
             />
         );

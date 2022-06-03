@@ -6,7 +6,7 @@ const Card = ({ children, hover }) => {
 
     if (hover) {
         return (
-            <article className={`${classes} hover:bg-base-200`}>
+            <article className={`${classes} transition ease-in-out hover:bg-base-200 duration-500`}>
                 <div className="card-body">{children}</div>
             </article>
         );

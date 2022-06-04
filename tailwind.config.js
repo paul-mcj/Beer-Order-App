@@ -51,7 +51,9 @@ module.exports = {
         },
         screens: {
             xsm: "470px",
+            sm: "640px",
             tablet: "800px",
+            lg: "1024px",
         },
     },
     plugins: [require("daisyui")],

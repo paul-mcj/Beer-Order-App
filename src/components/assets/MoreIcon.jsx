@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const MoreIcon = () => {
     return (
         <IconWrapper>
-            <More className="text-sm" />
+            <More className="text-xs xsm:text-sm sm:text-base" />
         </IconWrapper>
     );
 };

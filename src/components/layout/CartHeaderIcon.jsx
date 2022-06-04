@@ -13,7 +13,7 @@ const CartHeaderIcon = () => {
     const { totalItems } = useContext(CartContext);
 
     return (
-        <div className="p-2 dropdown xsm:dropdown-hover dropdown-bottom">
+        <div className="p-2 tablet:btn-lg dropdown lg:dropdown-hover dropdown-bottom">
             <label tabIndex="0">
                 <div className="indicator">
                     <CartIcon />

@@ -52,7 +52,6 @@ const Receipt = () => {
     // only show beer items that have been selected from the home screen to appear in the cart component
     const showItems = beers.map((beer) => {
         if (beer.amount > 0) {
-            console.log(beer);
             return (
                 <div
                     key={beer.id}

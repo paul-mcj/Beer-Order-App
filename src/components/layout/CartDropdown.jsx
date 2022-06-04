@@ -7,17 +7,20 @@ import CartContext from "../../context/cart/CartContext";
 // react-router-dom
 import { Link } from "react-router-dom";
 
+// components
+import Paragraph from "./Paragraph";
+
 const CartDropdown = () => {
     const { totalPrice } = useContext(CartContext);
 
     return (
         <Fragment>
             <span className="text-primary">
-                <p className="text-center">Total:</p>
-                <p className="text-center mb-5">${Math.abs(totalPrice).toFixed(2)}</p>
+                <Paragraph>Total:</Paragraph>
+                <Paragraph>${Math.abs(totalPrice).toFixed(2)}</Paragraph>
             </span>
             <Link to="/cart">
-                <button className="btn border-none btn-secondary hover:bg-secondary-focus hover:text-base-300">
+                <button className="mt-5 btn rounded uppercase font-bold btn-secondary hover:bg-secondary-focus hover:text-base-300 text-xs xsm:text-sm sm:text-base">
                     View Cart
                 </button>
             </Link>

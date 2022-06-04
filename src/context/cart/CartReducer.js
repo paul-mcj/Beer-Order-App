@@ -1,3 +1,5 @@
+import { alphabetize } from "./CartActions";
+
 const cartReducer = (state, action) => {
     switch (action.type) {
         case "NOT_LOADING":
@@ -38,6 +40,11 @@ const cartReducer = (state, action) => {
             return {
                 ...state,
                 totalPrice: action.payload,
+            };
+        case "ALPHABETIZE_A_TO_Z":
+            return {
+                ...state,
+                beers: alphabetize(action.payload),
             };
         default:
             return state;

@@ -1,15 +1,18 @@
 // react & hooks
 import PropTypes from "prop-types";
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useEffect } from "react";
 
 // components
 import BeerItem from "./BeerItem";
 import GroupBeerItems from "./GroupBeerItems";
 
 // context
-import { alphabetize } from "../../context/cart/CartActions";
+import CartContext from "../../context/cart/CartContext";
 
-const Ontap = ({ beers, pageNum }) => {
+const Ontap = ({ pageNum }) => {
+    // context
+    const { beers, dispatch } = useContext(CartContext);
+
     const showBeers = beers.map((beer) => (
         <BeerItem
             key={beer.id}
@@ -23,15 +26,25 @@ const Ontap = ({ beers, pageNum }) => {
         />
     ));
 
-    // useEffect(() => {
-    //     if (beers.length === 12) alphabetize();
-    // }, [beers]);
+    const alphabetizeBeers = () => {
+        dispatch({ type: "ALPHABETIZE_A_TO_Z", payload: beers });
+        console.log("alphabetize");
+    };
+
+    const sortBeersByPrice = () => {};
+
+    useEffect(() => {
+        if (beers.length === 12) console.log("useeffect");
+    }, [beers]);
 
     return (
         <Fragment>
-            <button className="btn" onClick={alphabetize.bind(null, beers)}>
+            {/* <button className="btn" onClick={alphabetizeBeers}>
                 alpha
             </button>
+            <button className="btn" onClick={sortBeersByPrice}>
+                price
+            </button> */}
             {pageNum === 1 && <GroupBeerItems>{showBeers.slice(0, 4)}</GroupBeerItems>}
             {pageNum === 2 && <GroupBeerItems>{showBeers.slice(4, 8)}</GroupBeerItems>}
             {pageNum === 3 && <GroupBeerItems>{showBeers.slice(8, 12)}</GroupBeerItems>}
@@ -40,7 +53,6 @@ const Ontap = ({ beers, pageNum }) => {
 };
 
 Ontap.propTypes = {
-    beers: PropTypes.array.isRequired,
     pageNum: PropTypes.number,
 };
 

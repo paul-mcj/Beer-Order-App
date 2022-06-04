@@ -1,15 +1,17 @@
-//components
-import IconWrapper from "../layout/IconWrapper";
+// // note: component is unused!
 
-// react-icons
-import { BiLinkExternal as MoreInfo } from "react-icons/bi";
+// //components
+// import IconWrapper from "../layout/IconWrapper";
 
-const ExternalIcon = () => {
-    return (
-        <IconWrapper>
-            <MoreInfo className="text-accent hover:text-accent-focus" />
-        </IconWrapper>
-    );
-};
+// // react-icons
+// import { BiLinkExternal as MoreInfo } from "react-icons/bi";
 
-export default ExternalIcon;
+// const ExternalIcon = () => {
+//     return (
+//         <IconWrapper>
+//             <MoreInfo className="text-accent hover:text-accent-focus" />
+//         </IconWrapper>
+//     );
+// };
+
+// export default ExternalIcon;

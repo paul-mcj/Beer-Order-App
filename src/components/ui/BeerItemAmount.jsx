@@ -76,9 +76,11 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
                     <LessIcon />
                 </Button>
                 {shouldAnimate ? (
-                    <span className="mx-5 animate-quickPing">{currentItemAmount}</span>
+                    <span className="mx-5 animate-quickPing xsm:text-lg tablet:text-xl">
+                        {currentItemAmount}
+                    </span>
                 ) : (
-                    <span className="mx-5">{currentItemAmount}</span>
+                    <span className="mx-5 xsm:text-lg tablet:text-xl">{currentItemAmount}</span>
                 )}
                 <Button handleClick={oneMore}>
                     <MoreIcon />

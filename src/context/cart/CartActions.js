@@ -1,4 +1,4 @@
-// Fetch data from API (for now simply log error)
+// fetch data from API (for now simply log error)
 export const getBeers = async () => {
     try {
         const res = await fetch("https://api.punkapi.com/v2/beers/random");
@@ -32,4 +32,20 @@ export const alphabetize = (arr) => {
         if (nameA > nameB) return 1;
         return 0;
     });
+};
+
+// taking in an array and returning it if all items have unique ids. If not, perform passed in function to handle error.
+export const validateArr = (beerArr, newBeer, performError) => {
+    beerArr.forEach((beer) => {
+        if (beer.id !== newBeer.id) {
+            return;
+        } else {
+            performError();
+        }
+    });
+};
+
+// find location of a beer object in an array given an id
+export const findBeerIndex = (beerArr, beerObj) => {
+    return beerArr.findIndex((beer) => beer.id === beerObj);
 };

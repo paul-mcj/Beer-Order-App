@@ -17,7 +17,7 @@ const Navbar = () => {
     const { error } = useContext(ErrorContext);
 
     return (
-        <nav className="rounded fixed top-20 left-0 z-10">
+        <nav className="rounded fixed top-20 left-2 z-10">
             <div className="flex flex-col justify-between gap-5">
                 <Link to="/">
                     <Button>

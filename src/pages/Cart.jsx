@@ -1,6 +1,7 @@
 // components
 import Receipt from "../components/layout/Receipt";
 import Header from "../components/layout/Header";
+import BeneathHeader from "../components/layout/BeneathHeader";
 import PageWrapper from "../components/layout/PageWrapper";
 
 // react-router-dom
@@ -30,9 +31,11 @@ const Cart = () => {
                 <PageWrapper>
                     <div className="text-center">
                         <Header>Looks like your cart is empty!</Header>
-                        <Link to="/">
-                            <TextButton btnText="go home" animationType="pulseDeep" />
-                        </Link>
+                        <BeneathHeader>
+                            <Link to="/">
+                                <TextButton btnText="go home" animationType="pulseDeep" />
+                            </Link>
+                        </BeneathHeader>
                     </div>
                 </PageWrapper>
             </motion.div>
@@ -48,7 +51,9 @@ const Cart = () => {
         >
             <PageWrapper>
                 <Header>Your Cart</Header>
-                <Receipt />
+                <BeneathHeader>
+                    <Receipt />
+                </BeneathHeader>
             </PageWrapper>
         </motion.div>
     );

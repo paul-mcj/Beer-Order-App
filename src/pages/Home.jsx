@@ -13,11 +13,8 @@ import PageWrapper from "../components/layout/PageWrapper";
 
 // context
 import CartContext from "../context/cart/CartContext";
-import { getBeers } from "../context/cart/CartActions";
+import { getBeers, validateArr } from "../context/cart/CartActions";
 import ErrorContext from "../context/error/ErrorContext";
-
-// utils
-import { validateArr } from "../utils/functions";
 
 // framer-motion
 import { motion } from "framer-motion";
@@ -64,7 +61,7 @@ const Home = () => {
         } else return;
     }, []);
 
-    // Fetch data upon component initialization, set loading context state when fetching is occurring, and set to the first page. Only invoke if there is no data in the context array.
+    // fetch data upon component initialization, set loading context state when fetching is occurring, and set to the first page. Only invoke if there is no data in the context array.
     useEffect(() => {
         if (beers.length < 12) {
             getApiData();
@@ -78,15 +75,7 @@ const Home = () => {
 
     // check ErrorContext and redirect to Error page if an error occurs when fetching data
     if (error) {
-        return (
-            // <motion.div
-            //     initial={{ opacity: 0 }}
-            //     animate={{ opacity: 1 }}
-            //     exit={{ opacity: 0, transition: { duration: 0.25 } }}
-            // >
-            <Navigate to="/error" />
-            // </motion.div>
-        );
+        return <Navigate to="/error" />;
     } else {
         return (
             <motion.div
@@ -100,7 +89,7 @@ const Home = () => {
                     ) : (
                         <Fragment>
                             <WelcomeText />
-                            <Ontap beers={beers} pageNum={pageNum} />
+                            <Ontap pageNum={pageNum} />
                             <Pagination pageNum={pageNum} setCurrentPage={setCurrentPage} />
                         </Fragment>
                     )}

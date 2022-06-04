@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const LessIcon = () => {
     return (
         <IconWrapper>
-            <Less className="text-sm" />
+            <Less className="text-xs xsm:text-sm sm:text-base tablet:text-lg lg:text-xl" />
         </IconWrapper>
     );
 };

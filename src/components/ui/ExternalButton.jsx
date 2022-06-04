@@ -1,19 +1,21 @@
-// react & hooks
-import PropTypes from "prop-types";
+// // note: component is unused!
 
-// components
-import ExternalIcon from "../assets/ExternalIcon";
+// // react & hooks
+// import PropTypes from "prop-types";
 
-const ExternalButton = ({ handleClick }) => {
-    return (
-        <button onClick={handleClick} className="absolute right-2 top-2">
-            <ExternalIcon />
-        </button>
-    );
-};
+// // components
+// import ExternalIcon from "../assets/ExternalIcon";
 
-ExternalButton.propTypes = {
-    handleClick: PropTypes.func,
-};
+// const ExternalButton = ({ handleClick }) => {
+//     return (
+//         <button onClick={handleClick} className="absolute right-2 top-2">
+//             <ExternalIcon />
+//         </button>
+//     );
+// };
 
-export default ExternalButton;
+// ExternalButton.propTypes = {
+//     handleClick: PropTypes.func,
+// };
+
+// export default ExternalButton;

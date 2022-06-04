@@ -16,7 +16,7 @@ const Pagination = ({ pageNum, setCurrentPage }) => {
     );
 
     return (
-        <div className="justify-center btn-group mt-10">
+        <div className="justify-center btn-group gap-3 tablet:gap-0 mt-10 tablet:mt-16">
             {pageNum === 1 ? activeButton(1) : notActiveButton(1)}
             {pageNum === 2 ? activeButton(2) : notActiveButton(2)}
             {pageNum === 3 ? activeButton(3) : notActiveButton(3)}

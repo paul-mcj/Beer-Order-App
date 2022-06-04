@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Header = ({ children }) => {
     return (
         <header className="grid">
-            <div className="font-bold text-lg xsm:text-xl text-center justify-self-center text-secondary-focus mb-10 xsm:mt-5">
+            <div className="font-bold text-center justify-self-center text-secondary-focus mb-10 text-lg xsm:text-xl sm:text-2xl tablet:text-3xl lg:text-4xl">
                 {children}
             </div>
         </header>

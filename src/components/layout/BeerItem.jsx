@@ -1,12 +1,11 @@
 // components
 import Card from "./Card";
 import BeerItemAmount from "../ui/BeerItemAmount";
-import ExternalButton from "../ui/ExternalButton";
 import Notification from "./Notification";
 
 // react & hooks
 import PropTypes from "prop-types";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import useNotification from "../../hooks/use-notification";
 
 // framer-motion
@@ -15,15 +14,9 @@ import { motion } from "framer-motion";
 const BeerItem = ({ name, amount, id, price, est, description, food }) => {
     // local state
     const [currentItemAmount, setCurrentItemAmount] = useState(amount);
-    const [screenSize, setScreenSize] = useState(window.innerWidth);
 
     // custom hook
     const { isNotification, updateNotificationState } = useNotification();
-
-    // for every component evaluation set this state in order to compare against it for media queries
-    useEffect(() => {
-        setScreenSize(() => window.innerWidth);
-    });
 
     if (isNotification) {
         return (
@@ -46,23 +39,19 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
             //     exit={{ opacity: 0, transition: { duration: 3 } }}
             // >
             <Card hover={true}>
-                {screenSize < 470 && <ExternalButton handleClick={updateNotificationState} />}
-                <ul className="grid grid-row-2 xsm:grid-cols-2">
+                <ul className="grid grid-rows-2">
                     <li>
-                        {screenSize >= 470 ? (
-                            <p
-                                className="link link-accent text-sm xsm:text-base font-bold"
-                                onClick={updateNotificationState}
-                            >
-                                {name}
-                            </p>
-                        ) : (
-                            <p className="text-sm xsm:text-base font-bold">{name}</p>
-                        )}
-
-                        <p className="text-sm xsm:text-base italic">$ {price.toFixed(2)}</p>
+                        <p
+                            className="link link-accent font-bold text-sm xsm:text-base sm:text-lg tablet:text-xl lg:text-2xl"
+                            onClick={updateNotificationState}
+                        >
+                            {name}
+                        </p>
+                        <p className="italic text-sm xsm:text-base sm:text-lg tablet:text-xl lg:text-2xl">
+                            $ {price.toFixed(2)}
+                        </p>
                     </li>
-                    <li className="flex justify-between items-center justify-self-end mt-4">
+                    <li className="flex justify-between items-center self-center justify-self-end">
                         <BeerItemAmount
                             currentItemAmount={currentItemAmount}
                             setCurrentItemAmount={setCurrentItemAmount}

@@ -55,7 +55,8 @@ const Receipt = () => {
             return (
                 <div
                     key={beer.id}
-                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2"
+                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2 "
+                    // <div className="flex flex-col gap-3 xsm:gap-4 sm:gap-5 tablet:gap-6 px-4 xsm:px-6 tablet:px-12">
                 >
                     <p className="text-center text-xs xsm:text-sm">{beer.amount}</p>
                     <p className="text-center -mx-10 text-xs xsm:text-sm">{beer.name}</p>
@@ -74,7 +75,7 @@ const Receipt = () => {
         <div className="grid grid-cols-4 justify-items-center mb-2">
             <h1 className="text-sm xsm:text-base text-bold">Qty</h1>
             <h1 className="text-sm xsm:text-base text-bold">Item</h1>
-            <h1 className="text-sm xsm:text-base text-bold">Unit Price</h1>
+            <h1 className="text-sm xsm:text-base text-bold">Price</h1>
             <h1 className="text-sm xsm:text-base text-bold">Total</h1>
         </div>
     );

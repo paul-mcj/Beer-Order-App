@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 
 const PageWrapper = ({ children }) => {
-    return <section className="p-14">{children}</section>;
+    return <section className="px-10 py-14 tablet:px-16 lg:px-10">{children}</section>;
 };
 
 PageWrapper.propTypes = {

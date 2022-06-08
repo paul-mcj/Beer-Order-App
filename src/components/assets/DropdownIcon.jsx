@@ -7,7 +7,7 @@ import IconWrapper from "../layout/IconWrapper";
 const DropdownIcon = () => {
     return (
         <IconWrapper>
-            <Down />
+            <Down className="text-2xl xsm:text-3xl sm:text-4xl" />
         </IconWrapper>
     );
 };

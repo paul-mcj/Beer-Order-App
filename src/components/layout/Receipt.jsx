@@ -55,13 +55,12 @@ const Receipt = () => {
             return (
                 <div
                     key={beer.id}
-                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2 "
-                    // <div className="flex flex-col gap-3 xsm:gap-4 sm:gap-5 tablet:gap-6 px-4 xsm:px-6 tablet:px-12">
+                    className="grid grid-cols-4 justify-items-center gap-x-14 border-b border-accent border-dotted items-center pb-2 text-center text-xs xsm:text-sm sm:text-base tablet:text-lg"
                 >
-                    <p className="text-center text-xs xsm:text-sm">{beer.amount}</p>
-                    <p className="text-center -mx-10 text-xs xsm:text-sm">{beer.name}</p>
-                    <p className="text-xs xsm:text-sm">${beer.price.toFixed(2)}</p>
-                    <p className="text-xs xsm:text-sm">${(beer.price * beer.amount).toFixed(2)}</p>
+                    <p>{beer.amount}</p>
+                    <p className="-mx-10">{beer.name}</p>
+                    <p>${beer.price.toFixed(2)}</p>
+                    <p>${(beer.price * beer.amount).toFixed(2)}</p>
                 </div>
             );
         } else {
@@ -72,11 +71,11 @@ const Receipt = () => {
 
     // used to reduce returned JSX
     const colHeadings = (
-        <div className="grid grid-cols-4 justify-items-center mb-2">
-            <h1 className="text-sm xsm:text-base text-bold">Qty</h1>
-            <h1 className="text-sm xsm:text-base text-bold">Item</h1>
-            <h1 className="text-sm xsm:text-base text-bold">Price</h1>
-            <h1 className="text-sm xsm:text-base text-bold">Total</h1>
+        <div className="grid grid-cols-4 justify-items-center mb-2 text-sm xsm:text-base sm:text-lg tablet:text-xl">
+            <h1>Qty</h1>
+            <h1>Item</h1>
+            <h1>Price</h1>
+            <h1>Total</h1>
         </div>
     );
 
@@ -84,15 +83,17 @@ const Receipt = () => {
     const finalAmounts = (
         <Fragment>
             <div className="grid mt-8 mb-4 grid-cols-2">
-                <div className="grid-cols-3 col-start-1 mr-4 justify-self-end">
-                    <h1 className="text-right text-xs xsm:text-sm">Subtotal:</h1>
-                    <h1 className="text-right text-xs xsm:text-sm">Taxes:</h1>
-                    <h1 className="text-right text-sm xsm:text-base font-bold">Total:</h1>
+                <div className="grid-cols-3 col-start-1 mr-4 text-right text-xs xsm:text-sm sm:text-base tablet:text-lg">
+                    <h1>Subtotal:</h1>
+                    <h1>Taxes:</h1>
+                    <h1 className="font-bold xsm:text-base sm:text-lg tablet:text-xl">Total:</h1>
                 </div>
-                <div className="grid-cols-3 col-start-2 ml-4">
-                    <h1 className="text-left text-xs xsm:text-sm">${subTotal}</h1>
-                    <h1 className="text-left text-xs xsm:text-sm">${taxes}</h1>
-                    <h1 className="text-left font-bold text-sm xsm:text-base">${totalAmount}</h1>
+                <div className="grid-cols-3 col-start-2 ml-4 text-left text-xs xsm:text-sm sm:text-base tablet:text-lg">
+                    <h1>${subTotal}</h1>
+                    <h1>${taxes}</h1>
+                    <h1 className="font-bold xsm:text-base sm:text-lg tablet:text-xl">
+                        ${totalAmount}
+                    </h1>
                 </div>
             </div>
             <div className="text-center">

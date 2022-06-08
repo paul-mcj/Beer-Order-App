@@ -4,6 +4,7 @@ import Header from "../components/layout/Header";
 import BeneathHeader from "../components/layout/BeneathHeader";
 import PageWrapper from "../components/layout/PageWrapper";
 import NotFoundIcon from "../components/assets/NotFoundIcon";
+import Paragraph from "../components/layout/Paragraph";
 
 // utils
 import { redirectToHomePg } from "../utils/functions";
@@ -21,11 +22,13 @@ const NotFound = () => {
             <PageWrapper>
                 <Header>Oops!</Header>
                 <BeneathHeader>
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col h-screen">
                         <NotFoundIcon />
-                        <p className="text-center leading-6 xsm:leading-8 mt-6 text-sm xsm:text-base">
-                            Looks like the page you were looking for does not exist.
-                        </p>
+                        <div className="mt-10">
+                            <Paragraph>
+                                Looks like the page you were looking for does not exist.
+                            </Paragraph>
+                        </div>
                         <TextButton
                             handleClick={redirectToHomePg}
                             animationType={"pulseDeep"}

@@ -9,6 +9,7 @@ import ReactDOM from "react-dom";
 import Header from "./Header";
 import ExitButton from "../ui/ExitButton";
 import TextButton from "../ui/TextButton";
+import Paragraph from "./Paragraph";
 
 const Backdrop = () => {
     return <div className="bg-base-content opacity-20 fixed top-0 left-0 w-full h-screen z-20" />;
@@ -23,15 +24,12 @@ const Overlay = ({ title, message, handleClick, btnText, description, food }) =>
         // make food array into <li> elements
         foodPairing = (
             <div className="text-center">
-                <ul className="flex flex-col items-center text-accent text-base xsm:text-lg font-bold">
+                <ul className="flex flex-col items-center text-accent font-bold text-base xsm:text-lg sm:text-xl tablet:text-2xl lg:text-3xl">
                     Food Pairings
                 </ul>
                 {food.map((foodItem) => (
-                    <li
-                        key={Math.random()}
-                        className="text-secondary-content leading-6 xsm:leading-8 text-xs xsm:text-sm list-none"
-                    >
-                        {foodItem}
+                    <li key={Math.random()} className="text-secondary-content list-none">
+                        <Paragraph>{foodItem}</Paragraph>
                     </li>
                 ))}
             </div>
@@ -41,28 +39,35 @@ const Overlay = ({ title, message, handleClick, btnText, description, food }) =>
     return (
         <div className="grid justify-items-center">
             <div
+                className={`animate-fadeIn grid z-20 bg-neutral rounded fixed overflow-auto top-24 bottom-64 ${
+                    extraDataToDisplay &&
+                    "mx-12 xsm:mx-20 sm:mx-32 tablet:mx-42 lg:mx-52 bottom-[384]"
+                }
+                `}
+            >
+                {/* <div
                 className={`animate-fadeIn grid z-20 bg-neutral rounded top-24 mx-12 fixed overflow-auto ${
                     extraDataToDisplay ? "bottom-64" : "bottom-[384]"
                 }`}
-            >
+            > */}
                 {btnText !== "reload" && <ExitButton handleClick={handleClick} />}
-                <section className="place-self-center flex flex-col m-10 items-center justify-around h-fit">
-                    <Header>
-                        <p className="text-primary">{title}</p>
-                    </Header>
+                <section className="place-self-center flex flex-col m-10 justify-around h-fit">
+                    <div className="text-primary">
+                        <Header>{title}</Header>
+                    </div>
                     {extraDataToDisplay ? (
-                        <p className="text-secondary-content italic -mt-10 mb-5 text-base xsm:text-lg ">
-                            {message}
-                        </p>
+                        <div className="text-secondary-content italic -mt-10 mb-5">
+                            <Paragraph>{message}</Paragraph>
+                        </div>
                     ) : (
-                        <p className="text-secondary-content mb-5 text-sm xsm:text-base text-center">
-                            {message}
-                        </p>
+                        <div className="text-secondary-content mb-5">
+                            <Paragraph>{message}</Paragraph>
+                        </div>
                     )}
                     {extraDataToDisplay && (
-                        <p className="text-center text-secondary-content mb-5 text-xs xsm:text-sm leading-6 xsm:leading-8">
-                            {description}
-                        </p>
+                        <div className="text-secondary-content mb-5">
+                            <Paragraph>{description}</Paragraph>
+                        </div>
                     )}
                     {extraDataToDisplay && foodPairing}
                     <TextButton handleClick={handleClick} btnText={btnText} />

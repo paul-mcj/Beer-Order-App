@@ -2,6 +2,7 @@
 import Header from "../components/layout/Header";
 import PageWrapper from "../components/layout/PageWrapper";
 import BeneathHeader from "../components/layout/BeneathHeader";
+import Paragraph from "../components/layout/Paragraph";
 
 // framer-motion
 import { motion } from "framer-motion";
@@ -15,19 +16,19 @@ const About = () => {
         >
             <PageWrapper>
                 <Header>About This App</Header>
-                <div className="flex flex-col text-center">
-                    <BeneathHeader>
-                        <p className="leading-6 xsm:leading-8 text-sm xsm:text-base">
+                <BeneathHeader>
+                    <div className="flex flex-col text-center gap-8 tablet:gap-12 sm:px-20">
+                        <Paragraph>
                             This project utilizes React functional components and react router v6 to
                             create a SPA that allows users to simulate adding specific beer items to
                             a cart with an updated total price and a final checkout.
-                        </p>
-                        <p className="leading-6 xsm:leading-8 text-sm xsm:text-base">
+                        </Paragraph>
+                        <Paragraph>
                             It gives users the ability to quickly and dynamically change items in
                             the cart, as well as navigating to different sections of the application
                             (such as the Home and About pages).
-                        </p>
-                        <p className="leading-6 xsm:leading-8 text-sm xsm:text-base">
+                        </Paragraph>
+                        <Paragraph>
                             This application makes use of asynchronous JS to gather&nbsp;
                             <a
                                 className="link link-accent"
@@ -36,8 +37,8 @@ const About = () => {
                             >
                                 API data
                             </a>
-                            &nbsp; via HTTP fetch requests and transforms the results into
-                            realistic, usable information for the cart capability. UI is styled with{" "}
+                            &nbsp;via HTTP fetch requests and transforms the results into realistic,
+                            usable information for the cart capability. UI is styled with&nbsp;
                             <a
                                 className="link link-accent"
                                 target="_blank"
@@ -45,7 +46,7 @@ const About = () => {
                             >
                                 Tailwind CSS
                             </a>
-                            &nbsp; and sprinkles use of both custom and &nbsp;
+                            &nbsp;and sprinkles use of both custom and&nbsp;
                             <a
                                 className="link link-accent"
                                 target="_blank"
@@ -53,10 +54,10 @@ const About = () => {
                             >
                                 framer motion
                             </a>
-                            &nbsp; animations for an enjoyable UX.
-                        </p>
-                        <p className="leading-6 xsm:leading-8 text-sm xsm:text-base">
-                            For more on the specifics of this application, see the Github &nbsp;
+                            &nbsp;animations for an enjoyable UX.
+                        </Paragraph>
+                        <Paragraph>
+                            For more on the specifics of this application, see the Github&nbsp;
                             <a
                                 className="link link-accent"
                                 target="_blank"
@@ -65,8 +66,8 @@ const About = () => {
                                 documentation
                             </a>
                             .
-                        </p>
-                        <p className="leading-6 xsm:leading-8 text-sm xsm:text-base">
+                        </Paragraph>
+                        <Paragraph>
                             For more on my other projects, see my&nbsp;
                             <a
                                 className="link link-accent"
@@ -75,10 +76,10 @@ const About = () => {
                             >
                                 Github
                             </a>
-                            &nbsp; profile.
-                        </p>
-                    </BeneathHeader>
-                </div>
+                            &nbsp;profile.
+                        </Paragraph>
+                    </div>
+                </BeneathHeader>
             </PageWrapper>
         </motion.div>
     );

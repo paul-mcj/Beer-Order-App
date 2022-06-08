@@ -13,6 +13,7 @@ import Header from "../components/layout/Header";
 import WarningIcon from "../components/assets/WarningIcon";
 import PageWrapper from "../components/layout/PageWrapper";
 import BeneathHeader from "../components/layout/BeneathHeader";
+import Paragraph from "../components/layout/Paragraph";
 
 // utils
 import { redirectToHomePg } from "../utils/functions";
@@ -29,13 +30,15 @@ const Error = () => {
             <PageWrapper>
                 <Header>Warning!</Header>
                 <BeneathHeader>
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col h-screen">
                         <WarningIcon />
-                        <p className="text-center leading-6 xsm:leading-8 mt-6 text-sm xsm:text-base">
-                            {message
-                                ? message
-                                : "Something went wrong. Please reload the application."}
-                        </p>
+                        <div className="mt-10">
+                            <Paragraph>
+                                {message
+                                    ? message
+                                    : "Something went wrong. Please reload the application."}
+                            </Paragraph>
+                        </div>
                         <TextButton
                             handleClick={redirectToHomePg}
                             btnText="reload"

@@ -8,6 +8,7 @@ module.exports = {
                 bounceDown: "bounceDown 1s infinite",
                 quickPing: "quickPing 0.25s cubic-bezier(0, 0, 0.2, 1) infinite",
                 fadeIn: "fadeIn 0.5s ease-in",
+                bubbleIn: "bubbleIn 1s linear",
             },
             keyframes: {
                 spinSlow: {
@@ -47,7 +48,18 @@ module.exports = {
                         opacity: "1",
                     },
                 },
+                bubbleIn: {
+                    "0%": {
+                        opacity: "0",
+                    },
+                    "100%": {
+                        opacity: "1",
+                    },
+                },
             },
+        },
+        scale: {
+            102: "1.02",
         },
         screens: {
             xsm: "470px",

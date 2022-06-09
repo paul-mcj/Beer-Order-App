@@ -1,5 +1,3 @@
-import { alphabetize } from "./CartActions";
-
 const cartReducer = (state, action) => {
     switch (action.type) {
         case "NOT_LOADING":
@@ -41,10 +39,59 @@ const cartReducer = (state, action) => {
                 ...state,
                 totalPrice: action.payload,
             };
-        case "ALPHABETIZE_A_TO_Z":
+        case "SORT_A_TO_Z":
+            let alphabetizedArr = [...state.beers];
+            alphabetizedArr.sort((a, b) => {
+                const nameA = a.name.toUpperCase();
+                const nameB = b.name.toUpperCase();
+                if (nameA < nameB) return -1;
+                if (nameA > nameB) return 1;
+                return 0;
+            });
             return {
                 ...state,
-                beers: alphabetize(action.payload),
+                beers: alphabetizedArr,
+            };
+        case "SORT_Z_TO_A":
+            let deAlphabetizedArr = [...state.beers];
+            deAlphabetizedArr.sort((a, b) => {
+                const nameA = a.name.toUpperCase();
+                const nameB = b.name.toUpperCase();
+                if (nameA > nameB) return -1;
+                if (nameA < nameB) return 1;
+                return 0;
+            });
+            return {
+                ...state,
+                beers: deAlphabetizedArr,
+            };
+        case "SORT_LOW_T0_HIGH":
+            let lowToHighArr = [...state.beers];
+            lowToHighArr.sort((a, b) => {
+                const priceA = a.price;
+                const priceB = b.price;
+                // if (priceA < priceB) return -1;
+                // if (priceA > priceB) return 1;
+                // return 0;
+                return a.price - b.price;
+            });
+            return {
+                ...state,
+                beers: lowToHighArr,
+            };
+        case "SORT_HIGH_TO_LOW":
+            let highToLowArr = [...state.beers];
+            highToLowArr.sort((a, b) => {
+                const priceA = a.price;
+                const priceB = b.price;
+                // if (priceA > priceB) return -1;
+                // if (priceA < priceB) return 1;
+                // return 0;
+                return b.price - a.price;
+            });
+            return {
+                ...state,
+                beers: highToLowArr,
             };
         default:
             return state;

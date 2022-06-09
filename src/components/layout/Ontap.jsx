@@ -1,10 +1,15 @@
 // react & hooks
 import PropTypes from "prop-types";
-import { Fragment, useContext, useEffect } from "react";
+import { Fragment, useContext, useState } from "react";
 
 // components
 import BeerItem from "./BeerItem";
 import GroupBeerItems from "./GroupBeerItems";
+import Button from "../ui/Button";
+import AToZIcon from "../assets/AToZIcon";
+import ZToAIcon from "../assets/ZToAIcon";
+import LowHighIcon from "../assets/LowHighIcon";
+import HighLowIcon from "../assets/HighLowIcon";
 
 // context
 import CartContext from "../../context/cart/CartContext";
@@ -13,6 +18,11 @@ const Ontap = ({ pageNum }) => {
     // context
     const { beers, dispatch } = useContext(CartContext);
 
+    // local state for sorting
+    const [sortPrice, setSortPrice] = useState(null);
+    const [sortAlpha, setSortAlpha] = useState(null);
+
+    // create <BeerItems /> by looping though context array
     const showBeers = beers.map((beer) => (
         <BeerItem
             key={beer.id}
@@ -26,25 +36,41 @@ const Ontap = ({ pageNum }) => {
         />
     ));
 
-    const alphabetizeBeers = () => {
-        dispatch({ type: "ALPHABETIZE_A_TO_Z", payload: beers });
-        console.log("alphabetize");
+    const sortBeersByAlpha = () => {
+        if (sortAlpha === null || sortAlpha === "Z_TO_A") {
+            dispatch({ type: "SORT_A_TO_Z" });
+            setSortAlpha(() => "A_TO_Z");
+            return;
+        } else dispatch({ type: "SORT_Z_TO_A" });
+        setSortAlpha(() => "Z_TO_A");
+        return;
     };
 
-    const sortBeersByPrice = () => {};
-
-    useEffect(() => {
-        if (beers.length === 12) console.log("useeffect");
-    }, [beers]);
+    const sortBeersByPrice = () => {
+        console.log(sortPrice);
+        if (sortPrice === null || sortPrice === "HIGH_TO_LOW") {
+            dispatch({ type: "SORT_LOW_TO_HIGH" });
+            setSortPrice(() => "LOW_TO_HIGH");
+            return;
+        } else dispatch({ type: "SORT_HIGH_TO_LOW" });
+        setSortPrice(() => "HIGH_TO_LOW");
+        return;
+    };
 
     return (
         <Fragment>
-            {/* <button className="btn" onClick={alphabetizeBeers}>
-                alpha
-            </button>
-            <button className="btn" onClick={sortBeersByPrice}>
-                price
-            </button> */}
+            <div className="px-4 xsm:px-6 tablet:px-12">
+                <Button handleClick={sortBeersByAlpha}>
+                    {sortAlpha === null || sortAlpha === "Z_TO_A" ? <AToZIcon /> : <ZToAIcon />}
+                </Button>
+                <Button handleClick={sortBeersByPrice}>
+                    {sortPrice === null || sortPrice === "HIGH_TO_LOW" ? (
+                        <LowHighIcon />
+                    ) : (
+                        <HighLowIcon />
+                    )}
+                </Button>
+            </div>
             {pageNum === 1 && <GroupBeerItems>{showBeers.slice(0, 4)}</GroupBeerItems>}
             {pageNum === 2 && <GroupBeerItems>{showBeers.slice(4, 8)}</GroupBeerItems>}
             {pageNum === 3 && <GroupBeerItems>{showBeers.slice(8, 12)}</GroupBeerItems>}

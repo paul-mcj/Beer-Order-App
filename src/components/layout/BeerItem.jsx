@@ -5,11 +5,8 @@ import Notification from "./Notification";
 
 // react & hooks
 import PropTypes from "prop-types";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import useNotification from "../../hooks/use-notification";
-
-// framer-motion
-import { motion } from "framer-motion";
 
 const BeerItem = ({ name, amount, id, price, est, description, food }) => {
     // local state
@@ -31,18 +28,11 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
         );
     } else
         return (
-            // fixme: animation to bring all components into the page thorough quick counter-dissolve
-            // <motion.div
-            //     className="flex flex-col gap-3"
-            //     initial={{ opacity: 0 }}
-            //     animate={{ opacity: 1 }}
-            //     exit={{ opacity: 0, transition: { duration: 3 } }}
-            // >
             <Card hover={true}>
-                <ul className="grid grid-rows-2">
+                <ul className="grid grid-rows-2 animate-bubbleIn">
                     <li>
                         <p
-                            className="link link-accent font-bold text-sm xsm:text-base sm:text-lg tablet:text-xl lg:text-2xl"
+                            className="link link-accent font-bold text-sm xsm:text-base sm:text-lg tablet:text-xl lg:text-2xl inline"
                             onClick={updateNotificationState}
                         >
                             {name}
@@ -61,7 +51,6 @@ const BeerItem = ({ name, amount, id, price, est, description, food }) => {
                     </li>
                 </ul>
             </Card>
-            // </motion.div>
         );
 };
 

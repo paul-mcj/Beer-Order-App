@@ -45,6 +45,7 @@ const Home = () => {
                         updateMsgState(
                             `Returned ${error} values from external server causing errors. Please reload the application.`
                         );
+                        return;
                     });
                     // otherwise update local array and then update CartContext array
                     beersArr.push(beer);
@@ -58,6 +59,8 @@ const Home = () => {
             }
             // update loading context state once all values are gathered
             dispatch({ type: "NOT_LOADING" });
+            console.log(beers);
+            console.log(beersArr);
         } else return;
     }, []);
 
@@ -67,7 +70,7 @@ const Home = () => {
             getApiData();
             dispatch({ type: "IS_LOADING" });
         }
-    }, [dispatch, beers, getApiData]);
+    }, []);
 
     const setCurrentPage = (num) => {
         setPageNum(() => num);

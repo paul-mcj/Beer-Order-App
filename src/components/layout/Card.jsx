@@ -6,7 +6,9 @@ const Card = ({ children, hover }) => {
 
     if (hover) {
         return (
-            <article className={`${classes} transition ease-in-out hover:bg-base-200 duration-500`}>
+            <article
+                className={`${classes} transition ease-in-out hover:bg-base-200 duration-500 transition hover:scale-102`}
+            >
                 <div className="card-body">{children}</div>
             </article>
         );

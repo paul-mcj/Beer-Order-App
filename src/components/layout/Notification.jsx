@@ -39,19 +39,15 @@ const Overlay = ({ title, message, handleClick, btnText, description, food }) =>
     return (
         <div className="grid justify-items-center">
             <div
-                className={`animate-fadeIn grid z-20 bg-neutral rounded fixed overflow-auto top-24 bottom-64 ${
+                className={`animate-fadeIn grid z-20 bg-neutral rounded top-24 mx-12 fixed overflow-auto ${
                     extraDataToDisplay &&
-                    "mx-12 xsm:mx-20 sm:mx-32 tablet:mx-42 lg:mx-52 bottom-[384]"
-                }
+                    "bottom-24 xsm:left-10 xsm:right-10 sm:left-16 sm:right-16 tablet:left-20 tablet:right-20 lg:left-32 lg:right-32"
+                } ${!extraDataToDisplay && "bottom-[384]"}
                 `}
             >
-                {/* <div
-                className={`animate-fadeIn grid z-20 bg-neutral rounded top-24 mx-12 fixed overflow-auto ${
-                    extraDataToDisplay ? "bottom-64" : "bottom-[384]"
-                }`}
-            > */}
-                {btnText !== "reload" && <ExitButton handleClick={handleClick} />}
                 <section className="place-self-center flex flex-col m-10 justify-around h-fit">
+                    {btnText !== "reload" && <ExitButton handleClick={handleClick} />}
+
                     <div className="text-primary">
                         <Header>{title}</Header>
                     </div>
@@ -65,7 +61,7 @@ const Overlay = ({ title, message, handleClick, btnText, description, food }) =>
                         </div>
                     )}
                     {extraDataToDisplay && (
-                        <div className="text-secondary-content mb-5">
+                        <div className="text-secondary-content mb-5 xsm:mx-5 sm:mx-8 tablet:mx-12">
                             <Paragraph>{description}</Paragraph>
                         </div>
                     )}

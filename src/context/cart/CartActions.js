@@ -1,4 +1,4 @@
-// fetch data from API (for now simply log error)
+// fetch data from API
 export const getBeers = async () => {
     try {
         const res = await fetch("https://api.punkapi.com/v2/beers/random");
@@ -23,14 +23,13 @@ export const getBeers = async () => {
     }
 };
 
-// taking in an array and returning it if all items have unique ids. If not, perform passed in function to handle error.
+// returns true if all items in array have unique ids, else callback function handles error
 export const validateArr = (beerArr, newBeer, performError) => {
     beerArr.forEach((beer) => {
         if (beer.id !== newBeer.id) {
             return;
         } else {
             performError();
-            console.log(newBeer);
         }
     });
 };

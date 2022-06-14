@@ -19,18 +19,15 @@ import ErrorContext from "../context/error/ErrorContext";
 // framer-motion
 import { motion } from "framer-motion";
 
-// global variables
-const BEERS_ARR = process.env.REACT_APP_BEERS_ARR_LENGTH;
-
 const Home = () => {
-    // local state (passed as props)
+    // local state
     const [pageNum, setPageNum] = useState(1);
 
     // context
     const { beers, dispatch, isLoading } = useContext(CartContext);
     const { updateMsgState, error } = useContext(ErrorContext);
 
-    // declared local variable to hold data temporarily before adding to context state
+    // declare local variable to hold data temporarily before adding to cart context
     let beersArr = [];
 
     // async function that grabs API data and updates context with values. useCallback will optimize function to not be re-evaluated (and thus not make any more http requests) when component updates.
@@ -40,14 +37,14 @@ const Home = () => {
             for (let i = 0; i < 12; i++) {
                 try {
                     let beer = await getBeers();
-                    // validate the local array -- if repeated values occur then update ErrorContext
+                    // validate the local array -- if repeated values occur then update ErrorContext...
                     validateArr(beersArr, beer, () => {
                         updateMsgState(
                             `Returned ${error} values from external server causing errors. Please reload the application.`
                         );
                         return;
                     });
-                    // otherwise update local array and then update CartContext array
+                    // ... otherwise update local array and then update CartContext array
                     beersArr.push(beer);
                     // add array to cart
                     dispatch({ type: "SET_BEERS", payload: beersArr });
@@ -59,8 +56,6 @@ const Home = () => {
             }
             // update loading context state once all values are gathered
             dispatch({ type: "NOT_LOADING" });
-            console.log(beers);
-            console.log(beersArr);
         } else return;
     }, []);
 
@@ -72,11 +67,12 @@ const Home = () => {
         }
     }, []);
 
+    // function sets the current page
     const setCurrentPage = (num) => {
         setPageNum(() => num);
     };
 
-    // check ErrorContext and redirect to Error page if an error occurs when fetching data
+    // check ErrorContext and redirect to Error page if an error occurs when fetching data, otherwise display default home page
     if (error) {
         return <Navigate to="/error" />;
     } else {

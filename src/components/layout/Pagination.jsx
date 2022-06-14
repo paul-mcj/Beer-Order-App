@@ -5,12 +5,14 @@ import PropTypes from "prop-types";
 import PaginationButton from "../ui/PaginationButton";
 
 const Pagination = ({ pageNum, setCurrentPage }) => {
+    // this active button sets particular tailwind classes within the button group
     const activeButton = (num) => (
         <PaginationButton active setCurrentPage={setCurrentPage}>
             {num}
         </PaginationButton>
     );
 
+    // this is a default tailwind button in a button group
     const notActiveButton = (num) => (
         <PaginationButton setCurrentPage={setCurrentPage}>{num}</PaginationButton>
     );

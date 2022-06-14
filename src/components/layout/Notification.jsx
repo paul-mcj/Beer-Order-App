@@ -17,21 +17,26 @@ const Backdrop = () => {
 
 const Overlay = ({ title, message, handleClick, btnText, description, food }) => {
     let foodPairing;
-    // if food and description are passed in as props, then this <Notification /> will need to have unique styles returned
+    // if food and description are passed in as props, then this <Notification /> will need to have unique css styles returned to fit users screens appropriately
     const extraDataToDisplay = food && description;
 
     if (extraDataToDisplay) {
-        // make food array into <li> elements
+        // map food array into <li> elements
         foodPairing = (
             <div className="text-center">
-                <ul className="flex flex-col items-center text-accent font-bold text-base xsm:text-lg sm:text-xl tablet:text-2xl lg:text-3xl">
-                    Food Pairings
+                <ul className="flex flex-col items-center">
+                    <p className="text-secondary font-bold text-base xsm:text-lg sm:text-xl tablet:text-2xl lg:text-3xl">
+                        Food Pairings
+                    </p>
+                    {food.map((foodItem) => (
+                        <li
+                            key={Math.random()}
+                            className="text-secondary-content list-none even:text-base-content"
+                        >
+                            <Paragraph>{foodItem}</Paragraph>
+                        </li>
+                    ))}
                 </ul>
-                {food.map((foodItem) => (
-                    <li key={Math.random()} className="text-secondary-content list-none">
-                        <Paragraph>{foodItem}</Paragraph>
-                    </li>
-                ))}
             </div>
         );
     }
@@ -73,7 +78,7 @@ const Overlay = ({ title, message, handleClick, btnText, description, food }) =>
     );
 };
 
-// assign proptypes
+// assign Overlay component proptypes
 Overlay.propTypes = {
     title: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
@@ -102,7 +107,7 @@ const Notification = ({ title, message, handleClick, btnText, description, food 
     );
 };
 
-// assign proptypes
+// assign Notification proptypes
 Notification.propTypes = {
     title: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,

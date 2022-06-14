@@ -2,6 +2,7 @@
 import { useState } from "react";
 
 export const useNotification = () => {
+    // local state can identify if a notification has occurred
     const [isNotification, setIsNotification] = useState(false);
 
     // function to change state to opposite of current state

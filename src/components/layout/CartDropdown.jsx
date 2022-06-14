@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import Paragraph from "./Paragraph";
 
 const CartDropdown = () => {
+    // destruct value from context to use dynamically in component
     const { totalPrice } = useContext(CartContext);
 
     return (

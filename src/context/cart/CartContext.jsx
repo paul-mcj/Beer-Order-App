@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
         totalItems: 0,
     };
 
-    // reducer for state mgmt
+    // reducer for state management
     const [state, dispatch] = useReducer(cartReducer, init);
 
     return <CartContext.Provider value={{ ...state, dispatch }}>{children}</CartContext.Provider>;

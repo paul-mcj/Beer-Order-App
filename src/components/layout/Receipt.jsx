@@ -16,12 +16,12 @@ import CartContext from "../../context/cart/CartContext";
 import { redirectToHomePg } from "../../utils/functions";
 
 const Receipt = () => {
-    // component state
+    // component state needs to be checked to facilitate correct UI
     const [displayTotals, setDisplayTotals] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [orderHasBeenPlaced, setOrderHasBeenPlaced] = useState(false);
 
-    // context
+    // cart context
     const { beers, totalPrice } = useContext(CartContext);
 
     // custom hook
@@ -42,7 +42,7 @@ const Receipt = () => {
     const placeOrder = () => {
         setIsLoading(() => true);
         setOrderHasBeenPlaced(() => true);
-        // wait 3 secs before updating state so LoadingIcon can be seen
+        // wait 3 artificial secs before updating state so <LoadingIcon /> can be seen
         setTimeout(() => {
             updateNotificationState();
             setIsLoading(() => false);
@@ -64,12 +64,12 @@ const Receipt = () => {
                 </div>
             );
         } else {
-            // return to avoid react list error
+            // return regardless to avoid compiler list errors
             return <Fragment key={beer.id} />;
         }
     });
 
-    // used to reduce returned JSX
+    // reuse css for returned JSX
     const colHeadings = (
         <div className="grid grid-cols-4 justify-items-center mb-2 text-sm xsm:text-base sm:text-lg tablet:text-xl">
             <h1>Qty</h1>

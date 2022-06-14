@@ -1,7 +1,8 @@
-// react & hooks
+// react
 import PropTypes from "prop-types";
 
 const Card = ({ children, hover }) => {
+    // defined absolute css classes
     const classes = "card card-bordered border-base-300 rounded";
 
     if (hover) {

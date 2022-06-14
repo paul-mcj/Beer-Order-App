@@ -13,10 +13,10 @@ import MoreIcon from "../assets/MoreIcon";
 import CartContext from "../../context/cart/CartContext";
 
 const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) => {
-    // component state
+    // component state defines animations
     const [shouldAnimate, setShouldAnimate] = useState(false);
 
-    // context
+    // cart context
     const { dispatch, totalItems, totalPrice } = useContext(CartContext);
 
     // custom hook
@@ -29,7 +29,7 @@ const BeerItemAmount = ({ currentItemAmount, setCurrentItemAmount, id, price }) 
         }, 250);
     };
 
-    // subtract one beer item from and cart context
+    // subtract one beer item from cart context
     const oneLess = () => {
         // validation so that beer item amount cannot be less than zero (else call notification panel to display error)
         if (currentItemAmount - 1 < 0) {

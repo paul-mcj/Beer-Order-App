@@ -7,21 +7,17 @@ import DropdownIcon from "../assets/DropdownIcon";
 import Button from "./Button";
 
 const SeeMoreButton = ({ handleClick }) => {
+    // custom hook needed to display animation after user inactivity
     const { shouldAnimate } = useAnimation();
+    const setAnimation = shouldAnimate ? "animate-bounceDown" : "";
 
     return (
         <div className="mx-auto mt-10">
-            {shouldAnimate ? (
-                <div className="animate-bounceDown">
-                    <Button handleClick={handleClick}>
-                        <DropdownIcon />
-                    </Button>
-                </div>
-            ) : (
+            <div className={setAnimation}>
                 <Button handleClick={handleClick}>
                     <DropdownIcon />
                 </Button>
-            )}
+            </div>
         </div>
     );
 };

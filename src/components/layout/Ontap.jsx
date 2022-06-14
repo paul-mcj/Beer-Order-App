@@ -15,10 +15,10 @@ import HighLowIcon from "../assets/HighLowIcon";
 import CartContext from "../../context/cart/CartContext";
 
 const Ontap = ({ pageNum }) => {
-    // context
+    // context to grab array of beers and updating reducer function
     const { beers, dispatch } = useContext(CartContext);
 
-    // local state for sorting
+    // local states for sorting context array
     const [sortPrice, setSortPrice] = useState(null);
     const [sortAlpha, setSortAlpha] = useState(null);
 
@@ -36,23 +36,24 @@ const Ontap = ({ pageNum }) => {
         />
     ));
 
+    // sort array alphabetically
     const sortBeersByAlpha = () => {
         if (sortAlpha === null || sortAlpha === "Z_TO_A") {
-            dispatch({ type: "SORT_A_TO_Z" });
+            dispatch({ type: "SORT_STATE", payload: "SORT_A_TO_Z" });
             setSortAlpha(() => "A_TO_Z");
             return;
-        } else dispatch({ type: "SORT_Z_TO_A" });
+        } else dispatch({ type: "SORT_STATE", payload: "SORT_Z_TO_A" });
         setSortAlpha(() => "Z_TO_A");
         return;
     };
 
+    // sort array based on price
     const sortBeersByPrice = () => {
-        console.log(sortPrice);
         if (sortPrice === null || sortPrice === "HIGH_TO_LOW") {
-            dispatch({ type: "SORT_LOW_TO_HIGH" });
+            dispatch({ type: "SORT_STATE", payload: "SORT_LOW_TO_HIGH" });
             setSortPrice(() => "LOW_TO_HIGH");
             return;
-        } else dispatch({ type: "SORT_HIGH_TO_LOW" });
+        } else dispatch({ type: "SORT_STATE", payload: "SORT_HIGH_TO_LOW" });
         setSortPrice(() => "HIGH_TO_LOW");
         return;
     };

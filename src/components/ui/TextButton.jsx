@@ -3,6 +3,7 @@ import useAnimation from "../../hooks/use-animation";
 import PropTypes from "prop-types";
 
 const TextButton = ({ handleClick, btnText, animationType }) => {
+    // animation custom hook
     const { shouldAnimate } = useAnimation();
 
     return (

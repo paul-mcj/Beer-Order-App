@@ -3,6 +3,7 @@ import Receipt from "../components/layout/Receipt";
 import Header from "../components/layout/Header";
 import BeneathHeader from "../components/layout/BeneathHeader";
 import PageWrapper from "../components/layout/PageWrapper";
+import TextButton from "../components/ui/TextButton";
 
 // react-router-dom
 import { Link } from "react-router-dom";
@@ -12,14 +13,15 @@ import CartContext from "../context/cart/CartContext";
 
 // react
 import { useContext } from "react";
-import TextButton from "../components/ui/TextButton";
 
 // framer-motion
 import { motion } from "framer-motion";
 
 const Cart = () => {
+    // destructure from cart context
     const { beers } = useContext(CartContext);
 
+    // if no beers are in context, return this...
     if (!beers.find((beer) => beer.amount > 0)) {
         return (
             <motion.div
@@ -42,6 +44,7 @@ const Cart = () => {
         );
     }
 
+    // ... else display beers user has added to cart
     return (
         <motion.div
             className="grid h-screen"

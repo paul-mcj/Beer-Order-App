@@ -14,6 +14,7 @@ import { useContext } from "react";
 import ErrorContext from "../../context/error/ErrorContext";
 
 const Navbar = () => {
+    // destruct value from context to make sure users cannot go to cart when an error has occurred
     const { error } = useContext(ErrorContext);
 
     return (

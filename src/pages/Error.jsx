@@ -19,6 +19,7 @@ import Paragraph from "../components/layout/Paragraph";
 import { redirectToHomePg } from "../utils/functions";
 
 const Error = () => {
+    // get message through error context to display to user
     const { message } = useContext(ErrorContext);
 
     return (

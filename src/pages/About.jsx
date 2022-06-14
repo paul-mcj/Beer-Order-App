@@ -34,6 +34,7 @@ const About = () => {
                                 className="link link-accent"
                                 target="_blank"
                                 href="https://punkapi.com/documentation/v2"
+                                rel="noreferrer"
                             >
                                 API data
                             </a>
@@ -43,6 +44,7 @@ const About = () => {
                                 className="link link-accent"
                                 target="_blank"
                                 href="https://tailwindcss.com/"
+                                rel="noreferrer"
                             >
                                 Tailwind CSS
                             </a>
@@ -51,6 +53,7 @@ const About = () => {
                                 className="link link-accent"
                                 target="_blank"
                                 href="https://www.framer.com/motion/"
+                                rel="noreferrer"
                             >
                                 framer motion
                             </a>
@@ -62,6 +65,7 @@ const About = () => {
                                 className="link link-accent"
                                 target="_blank"
                                 href="https://github.com/paul-mcj/Beer-Order-App#readme"
+                                rel="noreferrer"
                             >
                                 documentation
                             </a>
@@ -73,6 +77,7 @@ const About = () => {
                                 className="link link-accent"
                                 target="_blank"
                                 href="https://github.com/paul-mcj/"
+                                rel="noreferrer"
                             >
                                 Github
                             </a>

@@ -10,6 +10,7 @@ import CartIcon from "../assets/CartIcon";
 import CartContext from "../../context/cart/CartContext";
 
 const CartHeaderIcon = () => {
+    // destruct value from context to use dynamically in component
     const { totalItems } = useContext(CartContext);
 
     return (

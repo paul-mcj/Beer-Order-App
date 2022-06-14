@@ -5,9 +5,10 @@ React app that allows users to add items to a cart
  
  
  adding custom hooks
- tailwindcss
+ tailwindcss +cusomtization of animations, screens, etc.
  portals
  general functional build techniques (useEffect, state, etc)
 
 
 condensing code repetition (custom hooks, <Paginatino /> component, <TextButton /> component, etc) -- show exaples with code!
+

@@ -1,4 +1,5 @@
 # Beer Order App
+<<<<<<< HEAD
 
 ## About
 
@@ -162,3 +163,21 @@ One thing that this application does not have that I think would be a nice addit
 
 -   LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet)
 -   Github: [paul-mcj](https://github.com/paul-mcj)
+=======
+React app that allows users to add items to a cart
+
+ Make sure to include in app description that is potential manufacturing of an error is part of showcasing additional react-routing skills (though obviously logically altering fetched data in the array would suffice as well)
+ 
+ 
+ adding custom hooks for animation and error logic
+ tailwindcss +cusomtization of animations, screens, etc.
+ portals
+ general functional build techniques (useEffect, state, context, etc)
+ 
+ 
+ in the future, adding local storage to save user session data would be a nice addition
+
+how i imporoved it over time:
+condensing code repetition (custom hooks, <Paginatino /> component, <TextButton /> component, etc) -- show exaples with code!
+
+>>>>>>> ed615ba7ca24d4140be465f0639d44fc7785dc31

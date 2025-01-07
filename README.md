@@ -2,6 +2,10 @@
 
 <<<<<<< HEAD
 
+# <<<<<<< HEAD
+
+> > > > > > > f20b4ba498402c86347b22ffd3e2b66713d2f323
+
 ## About
 
 Many modern web sites and applications allow users to interact with items for
@@ -241,6 +245,8 @@ another excuse to use another custom hooks for such storage management.
 
 ## Author
 
+<<<<<<< HEAD
+
 -    LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet)
 -    # Github: [paul-mcj](https://github.com/paul-mcj)
      React app that allows users to add items to a cart
@@ -258,4 +264,8 @@ addition
 
 how i imporoved it over time: condensing code repetition (custom hooks,
 <Paginatino /> component, <TextButton /> component, etc) -- show exaples with
-code!
+code! =======
+
+-    LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet)
+-    Github: [paul-mcj](https://github.com/paul-mcj)
+     > > > > > > > f20b4ba498402c86347b22ffd3e2b66713d2f323

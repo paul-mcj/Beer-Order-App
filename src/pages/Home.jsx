@@ -1,8 +1,5 @@
 // react & hooks
-import React, { Fragment, useCallback, useContext, useEffect, useState } from "react";
-
-// react-router-dom
-import { Navigate } from "react-router-dom";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 
 // components
 import Ontap from "../components/layout/Ontap";
@@ -13,89 +10,76 @@ import PageWrapper from "../components/layout/PageWrapper";
 
 // context
 import CartContext from "../context/cart/CartContext";
-import { getBeers, validateArr } from "../context/cart/CartActions";
-import ErrorContext from "../context/error/ErrorContext";
+import { getRandomBeer } from "../context/cart/CartActions";
 
 // framer-motion
 import { motion } from "framer-motion";
 
 const Home = () => {
-    // local state
-    const [pageNum, setPageNum] = useState(1);
+	// local state
+	const [pageNum, setPageNum] = useState(1);
 
-    // context
-    const { beers, dispatch, isLoading } = useContext(CartContext);
-    const { updateMsgState, error } = useContext(ErrorContext);
+	// context
+	const { beers, dispatch, isLoading } = useContext(CartContext);
 
-    // declare local variable to hold data temporarily before adding to cart context
-    let beersArr = [];
+	// declare local variable to hold data temporarily before adding to cart context
+	let beersArr = [];
 
-    // async function that grabs API data and updates context with values. useCallback will optimize function to not be re-evaluated (and thus not make any more http requests) when component updates.
-    const getApiData = useCallback(async () => {
-        // Do not run unless the context array is empty
-        if (beers.length === 0) {
-            for (let i = 0; i < 12; i++) {
-                try {
-                    let beer = await getBeers();
-                    // validate the local array -- if repeated values occur then update ErrorContext...
-                    validateArr(beersArr, beer, () => {
-                        updateMsgState(
-                            `Returned ${error} values from external server causing errors. Please reload the application.`
-                        );
-                        return;
-                    });
-                    // ... otherwise update local array and then update CartContext array
-                    beersArr.push(beer);
-                    // add array to cart
-                    dispatch({ type: "SET_BEERS", payload: beersArr });
-                } catch (error) {
-                    updateMsgState(
-                        `There was an error connecting to the server. ${error}. Please reload the application.`
-                    );
-                }
-            }
-            // update loading context state once all values are gathered
-            dispatch({ type: "NOT_LOADING" });
-        } else return;
-    }, []);
+	// fetch data upon component initialization, set loading context state when fetching is occurring, and set to the first page
+	useEffect(() => {
+		if (beers.length === 0) {
+			const getApiData = () => {
+				let beer = getRandomBeer();
+				// if beer already exists, skip current iteration (want unique beers only)
+				if (beersArr.find((item) => item.id === beer.id)) {
+					return;
+				} else {
+					beersArr.push(beer);
+					dispatch({ type: "SET_BEERS", payload: beersArr });
+				}
+			};
 
-    // fetch data upon component initialization, set loading context state when fetching is occurring, and set to the first page. Only invoke if there is no data in the context array.
-    useEffect(() => {
-        if (beers.length < 12) {
-            getApiData();
-            dispatch({ type: "IS_LOADING" });
-        }
-    }, []);
+			while (beersArr.length < 12) {
+				getApiData();
+			}
 
-    // function sets the current page
-    const setCurrentPage = (num) => {
-        setPageNum(() => num);
-    };
+			if (beersArr.length === 12) {
+				// simulate loading from backend
+				dispatch({ type: "IS_LOADING" });
+				setTimeout(() => {
+					dispatch({ type: "NOT_LOADING" });
+				}, 1000);
+			}
+		}
+	}, []);
 
-    // check ErrorContext and redirect to Error page if an error occurs when fetching data, otherwise display default home page
-    if (error) {
-        return <Navigate to="/error" />;
-    } else {
-        return (
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0, transition: { duration: 0.25 } }}
-            >
-                <PageWrapper>
-                    {isLoading ? (
-                        <LoadingIcon />
-                    ) : (
-                        <Fragment>
-                            <WelcomeText />
-                            <Ontap pageNum={pageNum} />
-                            <Pagination pageNum={pageNum} setCurrentPage={setCurrentPage} />
-                        </Fragment>
-                    )}
-                </PageWrapper>
-            </motion.div>
-        );
-    }
+	// function sets the current page
+	const setCurrentPage = (num) => {
+		setPageNum(() => num);
+	};
+
+	return (
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0, transition: { duration: 0.25 } }}>
+			<PageWrapper>
+				{isLoading ? (
+					<LoadingIcon />
+				) : (
+					<Fragment>
+						<WelcomeText />
+						<Ontap pageNum={pageNum} />
+						<Pagination
+							pageNum={pageNum}
+							setCurrentPage={setCurrentPage}
+						/>
+					</Fragment>
+				)}
+			</PageWrapper>
+		</motion.div>
+	);
+	// }
 };
 
 export default Home;

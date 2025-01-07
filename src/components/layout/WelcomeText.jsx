@@ -7,18 +7,17 @@ import BeneathHeader from "./BeneathHeader";
 import Paragraph from "../layout/Paragraph";
 
 const WelcomeText = () => {
-    return (
-        <Fragment>
-            <Header>Order Your Beer Right Here</Header>
-            <BeneathHeader>
-                <Paragraph>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum ipsum ipsam
-                    pariatur voluptatem, totam obcaecati cumque assumenda adipisci explicabo impedit
-                    eveniet inventore incidunt et culpa debitis.
-                </Paragraph>
-            </BeneathHeader>
-        </Fragment>
-    );
+	return (
+		<Fragment>
+			<Header>Order Your Beer Right Here</Header>
+			<BeneathHeader>
+				<Paragraph>
+					See our variety of available beers! Read more about
+					each and add as many to your cart as you desire!
+				</Paragraph>
+			</BeneathHeader>
+		</Fragment>
+	);
 };
 
 export default WelcomeText;

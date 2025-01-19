@@ -95,7 +95,8 @@ const About = () => {
 								rel="noreferrer">
 								my website
 							</a>
-							&nbsp;to learn more about me!
+							&nbsp;to learn more about me, or to get in
+							touch!
 						</Paragraph>
 						<Paragraph>
 							<a

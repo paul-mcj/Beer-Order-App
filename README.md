@@ -1,16 +1,17 @@
-# Beer Order App
+# Beer Order App (v2.1)
 
-<<<<<<< HEAD
+## Recent Update: Jan 2025
 
-# <<<<<<< HEAD
+v2.1 fixed a few components regarding context and UI, but the largest amendment
+was a change to how the data is gathered. The original API is no longer
+available, as https requests were used to gather data for the application. It
+was re-written to use local JSON data instead.
 
-> > > > > > > f20b4ba498402c86347b22ffd3e2b66713d2f323
-
-## About
+## About this project
 
 Many modern web sites and applications allow users to interact with items for
 sale and add them to a cart, which is exactly what this
-[Beer Order App](https://beer-order-app-real.vercel.app/about) imitates by:
+[Beer Order App](https://beer-order-app.vercel.app/) imitates by:
 
 -    Leveraging several React technologies (such as custom hooks, the context
      API, useReducer functions and React portals)
@@ -20,20 +21,16 @@ sale and add them to a cart, which is exactly what this
      produce a realistic UX for a variety of users on a variety of screen types
 
 It does not however connect directly to a backend database (it is purely a
-front-end project that incorporates HTTP fetch requests that gather data for the
-application). So, because online shopping is so prevalent in todays
-technologically fueled society, I decided that I wanted to make my own version
-of an online checkout. I decided to use the
-[Punk API](https://punkapi.com/documentation/v2) to gather data and make the
-purpose of the application about users buying craft beers, as this particular
-API is always running and its documentation is straight-forward.
+front-end project that incorporates local JSON data). So, because online
+shopping is so prevalent in todays technologically fueled society, I decided
+that I wanted to make my own version of an online checkout.
 
 ## Challenges and Solutions
 
-This is by far my most complex and rewarding project to date! And while it was a
-lot of fun to build I did have a lot of complications along the way, which
-required some researching and tinkering with to figure out the exact logic
-required.
+This is by far my most complex and rewarding project to date (as of Mar 2022)!
+And while it was a lot of fun to build I did have a lot of complications along
+the way, which required some researching and tinkering with to figure out the
+exact logic required.
 
 ### The Problem with CSS
 
@@ -245,27 +242,6 @@ another excuse to use another custom hooks for such storage management.
 
 ## Author
 
-<<<<<<< HEAD
-
--    LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet)
--    # Github: [paul-mcj](https://github.com/paul-mcj)
-     React app that allows users to add items to a cart
-
-Make sure to include in app description that is potential manufacturing of an
-error is part of showcasing additional react-routing skills (though obviously
-logically altering fetched data in the array would suffice as well)
-
-adding custom hooks for animation and error logic tailwindcss +cusomtization of
-animations, screens, etc. portals general functional build techniques
-(useEffect, state, context, etc)
-
-in the future, adding local storage to save user session data would be a nice
-addition
-
-how i imporoved it over time: condensing code repetition (custom hooks,
-<Paginatino /> component, <TextButton /> component, etc) -- show exaples with
-code! =======
-
--    LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet)
--    Github: [paul-mcj](https://github.com/paul-mcj)
-     > > > > > > > f20b4ba498402c86347b22ffd3e2b66713d2f323
+-    My Website: [paulmcjannet.com](https://www.paulmcjannet.com/)
+-    LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet/)
+-    Github Profile: [paul-mcj](https://github.com/paul-mcj/)

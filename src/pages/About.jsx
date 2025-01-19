@@ -38,7 +38,7 @@ const About = () => {
 							results into realistic, usable information
 							for the cart capability. Since the API URL is
 							no longer available, a local API was made
-							instead and re-creates the JSON data.
+							instead using JSON data.
 						</Paragraph>
 						<Paragraph>
 							UI is styled with&nbsp;
@@ -72,6 +72,9 @@ const About = () => {
 							</a>
 							.
 						</Paragraph>
+						<h2 className="mt-8 font-bold text-center justify-self-center text-secondary-focus text-lg xsm:text-xl sm:text-2xl tablet:text-3xl lg:text-4xl">
+							About Me
+						</h2>
 						<Paragraph>
 							For more on my other projects, see my&nbsp;
 							<a
@@ -82,6 +85,27 @@ const About = () => {
 								Github
 							</a>
 							&nbsp;profile.
+						</Paragraph>
+						<Paragraph>
+							Visit&nbsp;
+							<a
+								className="link link-accent"
+								href="https://www.paulmcjannet.com/"
+								target="_blank"
+								rel="noreferrer">
+								my website
+							</a>
+							&nbsp;to learn more about me!
+						</Paragraph>
+						<Paragraph>
+							<a
+								className="link link-accent"
+								href="https://www.linkedin.com/in/paul-mcjannet/"
+								target="_blank"
+								rel="noreferrer">
+								Follow me
+							</a>
+							&nbsp;on LinkedIn.
 						</Paragraph>
 					</div>
 				</BeneathHeader>

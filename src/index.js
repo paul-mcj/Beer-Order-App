@@ -1,6 +1,6 @@
 // React & Hooks
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 // CSS
 import "./index.css";
@@ -8,9 +8,9 @@ import "./index.css";
 // Components
 import App from "./App";
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById("root")
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
 );

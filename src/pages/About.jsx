@@ -43,7 +43,7 @@ const About = () => {
 						<Paragraph>
 							UI is styled with&nbsp;
 							<a
-								className="link link-accent"
+								className="link text-accent underline"
 								target="_blank"
 								href="https://tailwindcss.com/"
 								rel="noreferrer">
@@ -52,7 +52,7 @@ const About = () => {
 							&nbsp;and sprinkles use of both custom
 							and&nbsp;
 							<a
-								className="link link-accent"
+								className="link text-accent underline"
 								target="_blank"
 								href="https://www.framer.com/motion/"
 								rel="noreferrer">
@@ -64,7 +64,7 @@ const About = () => {
 							For more on the specifics of this
 							application, see the Github&nbsp;
 							<a
-								className="link link-accent"
+								className="link text-accent underline"
 								target="_blank"
 								href="https://github.com/paul-mcj/Beer-Order-App#readme"
 								rel="noreferrer">
@@ -72,13 +72,13 @@ const About = () => {
 							</a>
 							.
 						</Paragraph>
-						<h2 className="mt-8 font-bold text-center justify-self-center text-secondary-focus text-lg xsm:text-xl sm:text-2xl tablet:text-3xl lg:text-4xl">
+						<h2 className="mt-8 font-bold text-center justify-self-center text-secondary text-lg xsm:text-xl sm:text-2xl tablet:text-3xl lg:text-4xl">
 							About Me
 						</h2>
 						<Paragraph>
 							For more on my other projects, see my&nbsp;
 							<a
-								className="link link-accent"
+								className="link text-accent underline"
 								target="_blank"
 								href="https://github.com/paul-mcj/"
 								rel="noreferrer">
@@ -89,7 +89,7 @@ const About = () => {
 						<Paragraph>
 							Visit&nbsp;
 							<a
-								className="link link-accent"
+								className="link text-accent underline"
 								href="https://www.paulmcjannet.com/"
 								target="_blank"
 								rel="noreferrer">
@@ -100,7 +100,7 @@ const About = () => {
 						</Paragraph>
 						<Paragraph>
 							<a
-								className="link link-accent"
+								className="link text-accent underline"
 								href="https://www.linkedin.com/in/paul-mcjannet/"
 								target="_blank"
 								rel="noreferrer">

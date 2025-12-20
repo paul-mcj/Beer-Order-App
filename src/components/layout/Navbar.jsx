@@ -14,26 +14,34 @@ import { useContext } from "react";
 import ErrorContext from "../../context/error/ErrorContext";
 
 const Navbar = () => {
-    // destruct value from context to make sure users cannot go to cart when an error has occurred
-    const { error } = useContext(ErrorContext);
+	// destruct value from context to make sure users cannot go to cart when an error has occurred
+	const { error } = useContext(ErrorContext);
 
-    return (
-        <nav className="rounded fixed top-20 left-2 z-10">
-            <div className="flex flex-col justify-between gap-5">
-                <Link to="/">
-                    <Button>
-                        <HomeIcon />
-                    </Button>
-                </Link>
-                <Link to="/about">
-                    <Button>
-                        <AboutIcon />
-                    </Button>
-                </Link>
-                {!error && <CartHeaderIcon />}
-            </div>
-        </nav>
-    );
+	return (
+		<nav className="rounded fixed top-20 left-2 z-10 ">
+			<div className="flex flex-col justify-between gap-5">
+				<Link
+					to="/"
+					className="cursor-pointer hover:text-secondary transition-colors duration-300">
+					<Button>
+						<HomeIcon />
+					</Button>
+				</Link>
+				<Link
+					to="/about"
+					className="cursor-pointer hover:text-secondary transition-colors duration-300">
+					<Button>
+						<AboutIcon />
+					</Button>
+				</Link>
+				{!error && (
+					<div className="cursor-pointer hover:text-secondary transition-colors duration-300">
+						<CartHeaderIcon />
+					</div>
+				)}
+			</div>
+		</nav>
+	);
 };
 
 export default Navbar;

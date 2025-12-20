@@ -13,26 +13,30 @@ import { ErrorProvider } from "./context/error/ErrorContext";
 import { CartProvider } from "./context/cart/CartContext";
 
 const App = () => {
-    return (
-        <CartProvider>
-            <ErrorProvider>
-                <Router>
-                    <Navbar />
-                    <div className="grid h-screen grid-rows-auto overflow-scroll">
-                        <div className="justify-self-center w-2/3">
-                            <h1 className="rounded text-center font-bold text-2xl xsm:text-3xl sm:text-4xl tablet:text-5xl lg:text-6xl bg-base-300 py-2 xsm:py-4 mt-2 tablet:mt-3 lg:mt-4">
-                                Beer Order App
-                            </h1>
-                        </div>
-                        <main className="container mx-auto pb-10 h-full">
-                            <AnimatedRoutes />
-                        </main>
-                        <Footer />
-                    </div>
-                </Router>
-            </ErrorProvider>
-        </CartProvider>
-    );
+	return (
+		<div
+			data-theme="dark"
+			className="bg-base-100 text-base-content min-h-screen">
+			<CartProvider>
+				<ErrorProvider>
+					<Router>
+						<Navbar />
+						<div className="grid h-screen grid-rows-auto overflow-scroll">
+							<div className="justify-self-center w-2/3">
+								<h1 className="rounded text-center font-bold text-2xl xsm:text-3xl sm:text-4xl tablet:text-5xl lg:text-6xl bg-base-300 py-2 xsm:py-4 mt-2 tablet:mt-3 lg:mt-4">
+									Beer Order App
+								</h1>
+							</div>
+							<main className="container mx-auto pb-10 h-full">
+								<AnimatedRoutes />
+							</main>
+							<Footer />
+						</div>
+					</Router>
+				</ErrorProvider>
+			</CartProvider>
+		</div>
+	);
 };
 
 export default App;

@@ -1,7 +1,83 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Google Font MUST come after the tailwind import but before any other CSS rules */
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@100;300;400;500;700;900&display=swap");
+
+@theme {
+	/* Screens (Breakpoints) */
+	--breakpoint-xsm: 470px;
+	--breakpoint-sm: 640px;
+	--breakpoint-tablet: 800px;
+	--breakpoint-lg: 1024px;
+
+	/* Custom Scale */
+	--scale-102: 1.02;
+
+	/* Animations */
+	--animate-spin-slow: spinSlow 2s linear infinite;
+	--animate-pulse-deep: pulseDeep 3s ease-out infinite;
+	--animate-bounce-down: bounceDown 1s infinite;
+	--animate-quick-ping: quickPing 0.25s cubic-bezier(0, 0, 0.2, 1) infinite;
+	--animate-fade-in: fadeIn 0.5s ease-in;
+	--animate-bubble-in: bubbleIn 1s linear;
+
+	/* Keyframes */
+	@keyframes spinSlow {
+		0% {
+			transform: rotate(-360deg);
+		}
+	}
+	@keyframes pulseDeep {
+		0%,
+		100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+	}
+	@keyframes bounceDown {
+		0%,
+		100% {
+			transform: translateY(0);
+			animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+		}
+		50% {
+			transform: translateY(25%);
+			animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+		}
+	}
+	@keyframes quickPing {
+		75%,
+		100% {
+			transform: scale(2);
+			opacity: 0;
+		}
+	}
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+	@keyframes bubbleIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+@layer base {
+	body {
+		@apply bg-base-100 text-base-content min-h-screen;
+	}
+}
 
 :root {
 	margin: 0;

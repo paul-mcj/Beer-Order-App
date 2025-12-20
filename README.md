@@ -1,4 +1,4 @@
-# Beer Order App (v2.1)
+# Beer Order App (v2.2)
 
 ## Recent Update: Jan 2025
 
@@ -6,6 +6,8 @@ v2.1 fixed a few components regarding context and UI, but the largest amendment
 was a change to how the data is gathered. The original API is no longer
 available, as https requests were used to gather data for the application. It
 was re-written to use local JSON data instead.
+
+v2.2 fixed daisyUI changes.
 
 ## About this project
 

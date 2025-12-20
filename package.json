@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@tailwindcss/cli": "^4.1.18",
 		"@tailwindcss/postcss": "^4.1.18",
 		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/react": "^16.3.1",
@@ -20,7 +21,7 @@
 		"start": "run-p watch:css start:js",
 		"start:js": "react-scripts start",
 		"watch:css": "tailwindcss -i ./src/index.css -o ./src/output.css --watch",
-		"build": "tailwindcss -i ./src/index.css -o ./src/output.css && react-scripts build",
+		"build": "npx @tailwindcss/cli -i ./src/index.css -o ./src/output.css && react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

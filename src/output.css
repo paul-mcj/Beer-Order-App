@@ -1466,11 +1466,6 @@
       padding-inline: calc(var(--spacing) * 12);
     }
   }
-  .tablet\:px-16 {
-    @media (width >= 800px) {
-      padding-inline: calc(var(--spacing) * 16);
-    }
-  }
   .tablet\:text-2xl {
     @media (width >= 800px) {
       font-size: var(--text-2xl);
@@ -1547,11 +1542,6 @@
       padding-inline: calc(var(--spacing) * 10);
     }
   }
-  .lg\:px-52 {
-    @media (width >= 1024px) {
-      padding-inline: calc(var(--spacing) * 52);
-    }
-  }
   .lg\:text-2xl {
     @media (width >= 1024px) {
       font-size: var(--text-2xl);
@@ -1592,16 +1582,6 @@
     @media (width >= 1024px) {
       --tw-leading: calc(var(--spacing) * 10);
       line-height: calc(var(--spacing) * 10);
-    }
-  }
-  .xl\:px-72 {
-    @media (width >= 80rem) {
-      padding-inline: calc(var(--spacing) * 72);
-    }
-  }
-  .\32 xl\:px-96 {
-    @media (width >= 96rem) {
-      padding-inline: calc(var(--spacing) * 96);
     }
   }
 }

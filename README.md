@@ -246,4 +246,4 @@ another excuse to use another custom hooks for such storage management.
 
 -    My Website: [paulmcjannet.com](https://www.paulmcjannet.com/)
 -    LinkedIn: [Paul McJannet](https://www.linkedin.com/in/paul-mcjannet/)
--    Github Profile: [paul-mcj](https://github.com/paul-mcj/)
+-    Github Profile: [paul-mcj](https://github.com/paul-mcj/).

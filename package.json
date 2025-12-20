@@ -21,7 +21,7 @@
 		"start": "run-p watch:css start:js",
 		"start:js": "react-scripts start",
 		"watch:css": "tailwindcss -i ./src/index.css -o ./src/output.css --watch",
-		"build": "npx @tailwindcss/cli -i ./src/index.css -o ./src/output.css && react-scripts build",
+		"build": "@tailwindcss/cli -i ./src/index.css -o ./src/output.css && react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

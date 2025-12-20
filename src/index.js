@@ -1,9 +1,8 @@
+import "./output.css";
+
 // React & Hooks
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-// CSS
-import "./index.css";
 
 // Components
 import App from "./App";
